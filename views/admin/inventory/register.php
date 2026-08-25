@@ -82,31 +82,31 @@
         <form action="/register/store" method="POST" enctype="multipart/form-data">
             <!-- Username -->
             <div class="form-group">
-                <i class="fas fa-user"></i>
+                <i class="ti ti-user"></i>
                 <input type="text" class="form-control" name="username" placeholder="Username" required>
             </div>
 
             <!-- Email -->
             <div class="form-group">
-                <i class="fas fa-envelope"></i>
+                <i class="ti ti-mail"></i>
                 <input type="email" class="form-control" name="email" placeholder="Email Address" required>
             </div>
 
             <!-- Phone -->
             <div class="form-group">
-                <i class="fas fa-phone"></i>
+                <i class="ti ti-phone"></i>
                 <input type="text" class="form-control" name="phone" placeholder="Phone Number" required>
             </div>
 
             <!-- Password -->
             <div class="form-group">
-                <i class="fas fa-lock"></i>
+                <i class="ti ti-lock"></i>
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
 
             <!-- Role Selection -->
             <div class="form-group">
-                <i class="fas fa-users"></i>
+                <i class="ti ti-users"></i>
                 <select class="form-control" name="role" required>
                     <option selected value="users">User</option>
                     <option value="admin">Admin</option>

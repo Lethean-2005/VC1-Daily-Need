@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])) :
         body {
             background-color: #f5e6f5;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             margin-top: 50px;
         }
         .shop {
@@ -192,7 +192,7 @@ if (isset($_SESSION['user_id'])) :
         }
         .title {
             color: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             text-align: center;
             background-color: rgb(12, 230, 242);
             padding: 10px;
@@ -320,7 +320,7 @@ if (isset($_SESSION['user_id'])) :
                                     <div class="card-body d-flex flex-column">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <h6 class="card-title"><?php echo $product['title']; ?></h6>
-                                            <i class="bi bi-heart" data-heart-id="<?php echo $product['id']; ?>" onclick="toggleFavorite(<?php echo $product['id']; ?>)"></i>
+                                            <i class="ti ti-heart" data-heart-id="<?php echo $product['id']; ?>" onclick="toggleFavorite(<?php echo $product['id']; ?>)"></i>
                                         </div>
                                         <div class="rating mb-2">
                                             <span class="star" data-star="1" onclick="setRating(<?php echo $product['id']; ?>, 1)">★</span>
@@ -338,8 +338,8 @@ if (isset($_SESSION['user_id'])) :
                                             </span>
                                         </div>
                                         <div class="d-flex justify-content-between mt-2">
-                                            <button class="btn btn-purple text-white" onclick="addToCart(<?php echo $product['id']; ?>)"><i class="bi bi-cart"></i> Add to Cart</button>
-                                            <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
+                                            <button class="btn btn-purple text-white" onclick="addToCart(<?php echo $product['id']; ?>)"><i class="ti ti-shopping-cart"></i> Add to Cart</button>
+                                            <button class="btn btn-green text-white"><i class="ti ti-circle-check"></i> Buy Now</button>
                                         </div>
                                     </div>
                                 </div>

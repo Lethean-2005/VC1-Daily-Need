@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 require_once "Models/LoginModel.php";
 require_once "Models/UserModel.php";
-class LoginController extends BaseadminController {
+class LoginController extends BaseAdminController {
     private $users;
     private $userModel;
 

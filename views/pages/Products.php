@@ -7,32 +7,31 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$host = 'localhost';
-$dbname = 'dailyneed_db';
-$username = 'root'; 
-$password = ''; 
+require_once "Models/ProductModel.php";
+$productModel = new ProductModel();
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+$allowedSorts = ['newest', 'toprated', 'popular'];
+$sort = in_array($_GET['sort'] ?? '', $allowedSorts) ? $_GET['sort'] : 'newest';
 
-$stmt = $pdo->query("SELECT * FROM products");
-$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$products = $productModel->getProductsWithStats($sort);
+$categoryCounts = $productModel->getCategoryCounts();
+
+$categories = [
+    ['label' => 'Oral Health',        'db' => 'Oral Health',         'href' => '/oral'],
+    ['label' => 'Feminine Hygiene',   'db' => 'Feminine Hygiene',    'href' => '/feminine'],
+    ['label' => 'Household Hygiene',  'db' => 'House Hold Hygiene',  'href' => '/houeshold'],
+    ['label' => 'Tissue',             'db' => 'Tissue',              'href' => '/tissue'],
+    ['label' => 'Drinking Water',     'db' => 'Drinking Water',      'href' => '/drinking'],
+    ['label' => 'Beverages',          'db' => 'Beverages',           'href' => '/beverage'],
+    ['label' => 'Soap',               'db' => 'Soap',                'href' => '/saop'],
+    ['label' => 'Cooking Ingredients','db' => 'Cooking Ingredients', 'href' => '/cooking'],
+    ['label' => 'Snacks',             'db' => 'Snacks',              'href' => '/snacks'],
+];
 
 $applied_coupon = null;
-if (isset($_SESSION['applied_coupon']) && !empty($_SESSION['applied_coupon']['code'])) {
-    $stmt = $pdo->prepare(
-        "SELECT discount_type, discount_value, expiry_date 
-         FROM promo_codes 
-         WHERE code = :code"
-    );
-    $stmt->execute(['code' => $_SESSION['applied_coupon']['code']]);
-    $coupon = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    if ($coupon && (!$coupon['expiry_date'] || strtotime($coupon['expiry_date']) >= time())) {
+if (isset($_SESSION['applied_coupon']['code'])) {
+    $coupon = $productModel->validateCoupon($_SESSION['applied_coupon']['code'], $_SESSION['user_id']);
+    if ($coupon) {
         $applied_coupon = $coupon;
     } else {
         unset($_SESSION['applied_coupon']);
@@ -43,373 +42,250 @@ function getDiscountedPrice($price, $coupon) {
     if (!$coupon) return $price;
     if ($coupon['discount_type'] === 'percentage') {
         return $price * (1 - $coupon['discount_value'] / 100);
-    } else {
-        return max(0, $price - $coupon['discount_value']);
     }
+    return max(0, $price - $coupon['discount_value']);
 }
+
+function dn_stars($rating) {
+    $full = (int) round($rating);
+    return str_repeat('★', $full) . str_repeat('☆', 5 - $full);
+}
+
+$maxPrice = 0;
+foreach ($products as $p) {
+    $maxPrice = max($maxPrice, (float) $p['price']);
+}
+$maxPrice = $maxPrice > 0 ? ceil($maxPrice) : 100;
 ?>
 
-    <style>
-        body {
-            background-color: #f5f5f5;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            margin-top: 50px;
-        }
-        .shop {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .filter, .filter-categories {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-        }
-        .filter h3, .filter-categories h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        #priceRange {
-            width: 100%;
-        }
-        #priceValue {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-        #searchForm .form-control {
-            border-radius: 20px;
-            border: 1px solid #ddd;
-        }
-        #searchForm .btn-primary {
-            background-color: #6f42c1;
-            border: none;
-            border-radius: 20px;
-            padding: 10px;
-        }
-        #searchForm .btn-primary:hover {
-            background-color: #5a2b96;
-        }
-        .filter-categories .list-group-item {
-            border: none;
-            padding: 10px 0;
-            font-size: 14px;
-        }
-        .filter-categories .list-group-item a {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            align-items: center;
-        }
-        .filter-categories .list-group-item a:hover {
-            color: #6f42c1;
-        }
-        .filter-categories .list-group-item i {
-            margin-right: 10px;
-            color: #6f42c1;
-            font-size: 16px;
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card img {
-            max-height: 160px;
-            object-fit: contain;
-        }
-        .card-body {
-            padding: 15px;
-        }
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .card-text {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .rating .star {
-            font-size: 14px;
-            cursor: pointer;
-            color: #dddd;
-            transition: color 0.2s ease;
-        }
-        .rating .star.filled {
-            color: rgb(255, 217, 0);
-        }
-        .rating .rating-value {
-            font-size: 12px;
-            color: #666;
-            margin-left: 5px;
-        }
-        .price {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .price-discounted {
-            color: #28a745;
-            font-weight: bold;
-        }
-        .price-original {
-            text-decoration: line-through;
-            color: #6c757d;
-            margin-right: 5px;
-        }
-        .btn-purple, .btn-green {
-            border-radius: 15px;
-            font-size: 12px;
-            padding: 8px;
-            width: 48%;
-            transition: background-color 0.3s ease;
-        }
-        .btn-purple {
-            background-color: #6f42c1;
-            border-color: #6f42c1;
-        }
-        .btn-purple:hover {
-            background-color: #5a2b96;
-            border-color: #5a2b96;
-        }
-        .btn-green {
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-        .btn-green:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
-        }
-        .bi-heart, .bi-heart-fill {
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .bi-heart-fill {
-            color: #6f42c1;
-        }
-        .view-details-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .card:hover .view-details-btn {
-            opacity: 1;
-        }
-        @media (max-width: 767px) {
-            .filter, .filter-categories {
-                margin: 0 15px 20px;
-            }
-            .card {
-                margin: 0 auto;
-                max-width: 300px;
-            }
-        }
-    </style>
-</head>
-<body>
-<div class="shop container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="filter">
-                <h3>Filter by Price</h3>
-                <input type="range" id="priceRange" min="1" max="100" step="1" value="100" class="form-range">
-                <span id="priceValue">$1 - $100</span>
-                <form id="searchForm">
-                    <input type="text" id="search" name="q" placeholder="Search by product name" class="form-control mt-3">
-                    <button type="submit" class="btn btn-primary mt-2 w-100">Search</button>
-                </form>
+<style>
+    .dn-shop { background: #f7f6f3; padding: 32px 0 60px; }
+    .dn-shop .container { max-width: 1200px; }
+    .dn-shop-crumb { font-size: .82rem; color: #999; margin-bottom: 4px; }
+    .dn-shop-crumb a { color: #999; text-decoration: none; }
+    .dn-shop-title { font-size: 1.7rem; font-weight: 700; color: #1f2a1f; margin-bottom: 24px; }
+
+    .dn-panel {
+        background: #fff;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 4px 14px rgba(0,0,0,.05);
+        margin-bottom: 20px;
+    }
+    .dn-panel h3 { font-size: 1rem; font-weight: 700; color: #1f2a1f; margin-bottom: 14px; }
+
+    .dn-cat-list { list-style: none; margin: 0; padding: 0; }
+    .dn-cat-list li { margin-bottom: 4px; }
+    .dn-cat-list a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 4px;
+        color: #555;
+        text-decoration: none;
+        font-size: .88rem;
+        border-radius: 6px;
+    }
+    .dn-cat-list a:hover { background: #f4f3ef; color: #1f2a1f; }
+    .dn-cat-list .count { color: #aaa; font-size: .78rem; }
+
+    .dn-price-value { text-align: center; font-size: .85rem; color: #666; margin-top: 8px; }
+
+    .dn-toolbar {
+        background: #fff;
+        border-radius: 14px;
+        padding: 14px 20px;
+        box-shadow: 0 4px 14px rgba(0,0,0,.05);
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+        justify-content: space-between;
+    }
+    .dn-search-box { position: relative; flex: 1 1 220px; max-width: 320px; }
+    .dn-search-box input {
+        width: 100%;
+        padding: 9px 14px 9px 36px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        background: #f7f6f3;
+        font-size: .88rem;
+    }
+    .dn-search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #999; }
+    .dn-results-count { font-size: .82rem; color: #999; white-space: nowrap; }
+    .dn-sort-tabs { display: flex; gap: 4px; background: #f7f6f3; border-radius: 8px; padding: 4px; }
+    .dn-sort-tabs a {
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: .82rem;
+        font-weight: 600;
+        color: #666;
+        text-decoration: none;
+    }
+    .dn-sort-tabs a.active { background: #fff; color: #1f2a1f; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+
+    .dn-product-card {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 14px rgba(0,0,0,.05);
+        transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    }
+    .dn-product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(0,0,0,.1); }
+    .dn-product-img {
+        position: relative;
+        background: #f7f6f3;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dn-product-img img { max-height: 75%; max-width: 75%; object-fit: contain; }
+    .dn-product-fav {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+    .dn-product-fav.active { color: #d64545; }
+    .dn-product-body { padding: 14px 16px; display: flex; flex-direction: column; flex: 1; }
+    .dn-product-name { font-weight: 600; font-size: .92rem; margin-bottom: 6px; cursor: pointer; }
+    .dn-product-price-row { margin-bottom: 6px; }
+    .dn-product-price { font-weight: 700; color: #1f2a1f; }
+    .dn-product-was { color: #aaa; text-decoration: line-through; font-size: .8rem; margin-left: 6px; }
+    .dn-product-rating { font-size: .78rem; color: #f4b400; margin-bottom: 12px; }
+    .dn-product-rating .count { color: #999; margin-left: 4px; }
+    .dn-add-cart-btn {
+        margin-top: auto;
+        border: none;
+        background: #1f2a1f;
+        color: #fff;
+        width: 100%;
+        padding: 9px 0;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: .85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    .dn-add-cart-btn:hover { background: #d98c4a; }
+</style>
+
+<div class="dn-shop">
+    <div class="container">
+        <div class="dn-shop-crumb"><a href="/">Home</a> / Shop</div>
+        <h1 class="dn-shop-title">Products</h1>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="dn-panel">
+                    <h3>Product Categories</h3>
+                    <ul class="dn-cat-list">
+                        <?php foreach ($categories as $cat): ?>
+                            <li>
+                                <a href="<?= htmlspecialchars($cat['href']) ?>">
+                                    <span>&rsaquo; <?= htmlspecialchars($cat['label']) ?></span>
+                                    <span class="count"><?= (int) ($categoryCounts[$cat['db']] ?? 0) ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+                <div class="dn-panel">
+                    <h3>Price Range</h3>
+                    <input type="range" id="priceRange" min="0" max="<?= (int) $maxPrice ?>" step="1" value="<?= (int) $maxPrice ?>" class="form-range">
+                    <div class="dn-price-value">Up to $<span id="priceValue"><?= (int) $maxPrice ?></span></div>
+                </div>
             </div>
-            <div class="filter-categories mt-4">
-                <h3>Filter by Categories</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="/oral" class="d-flex align-items-center">
-                            <i class="fas fa-tooth me-3" style="color:rgb(12, 230, 242);"></i>
-                            <span>Oral Health </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/feminine" class="d-flex align-items-center">
-                            <i class="fas fa-female me-3" style="color:rgb(155, 24, 215);"></i>
-                            <span>Feminine Hygiene </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/houeshold" class="d-flex align-items-center">
-                            <i class="fas fa-home me-3" style="color:rgb(41, 8, 161);"></i>
-                            <span>Household Hygiene </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/tissue" class="d-flex align-items-center">
-                            <i class="fas fa-toilet-paper me-3" style="color:rgb(16, 198, 168);"></i>
-                            <span>Tissue Roll </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/drinking" class="d-flex align-items-center">
-                            <i class="fas fa-tint me-3" style="color:rgb(109, 200, 239);"></i>
-                            <span>Drinking Water </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/beverage" class="d-flex align-items-center">
-                            <i class="fas fa-coffee me-3" style="color:rgb(209, 179, 10);"></i>
-                            <span>Beverages </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/saop" class="d-flex align-items-center">
-                            <i class="fas fa-soap me-3" style="color:rgb(210, 17, 129);"></i>
-                            <span>Soap </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/cooking" class="d-flex align-items-center">
-                            <i class="fas fa-utensils me-3" style="color:rgb(12, 211, 188);"></i>
-                            <span>Cooking Ingredients </span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="/snacks" class="d-flex align-items-center">
-                            <i class="fas fa-cookie me-3" style="color:rgb(121, 201, 22);"></i>
-                            <span>Snacks </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="row px-3 py-4" id="productList">
-                <?php if (!empty($products) && is_array($products)): ?>
-                    <?php foreach ($products as $product): 
-                        $original_price = floatval($product['price']);
-                        $discounted_price = getDiscountedPrice($original_price, $applied_coupon);
-                    ?>
-                        <div class="col-md-4 col-sm-6 mb-4" data-product-id="<?= htmlspecialchars($product['id']) ?>">
-                            <div class="card text-start shadow-sm d-flex flex-column" style="border-radius: 12px; overflow: hidden; height: 100%;">
-                                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; border-top-left-radius: 12px; border-top-right-radius: 12px; position: relative;">
-                                    <img src="<?= htmlspecialchars($product['imageURL']) ?>" alt="<?= htmlspecialchars($product['productname']) ?>" class="img-fluid" style="max-height: 100%; object-fit: contain;" onerror="this.src='/public/images/products/placeholder.jpg';">
-                                    <button class="view-details-btn" onclick="viewDetails(<?= htmlspecialchars($product['id']) ?>)">View Details</button>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <h6 class="card-title"><?= htmlspecialchars($product['productname']) ?></h6>
-                                        <i class="bi bi-heart" data-heart-id="<?= htmlspecialchars($product['id']) ?>" onclick="toggleFavorite(<?= htmlspecialchars($product['id']) ?>)"></i>
+
+            <div class="col-lg-9">
+                <div class="dn-toolbar">
+                    <div class="dn-search-box">
+                        <i class="ti ti-search"></i>
+                        <input type="text" id="search" placeholder="Search products...">
+                    </div>
+                    <div class="dn-results-count">Showing <?= count($products) ?> of <?= count($products) ?> results</div>
+                    <div class="dn-sort-tabs">
+                        <a href="?sort=toprated" class="<?= $sort === 'toprated' ? 'active' : '' ?>">Top Rated</a>
+                        <a href="?sort=popular" class="<?= $sort === 'popular' ? 'active' : '' ?>">Popular</a>
+                        <a href="?sort=newest" class="<?= $sort === 'newest' ? 'active' : '' ?>">Newest</a>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="productList">
+                    <?php if (!empty($products)): ?>
+                        <?php foreach ($products as $product):
+                            $original_price = (float) $product['price'];
+                            $discounted_price = getDiscountedPrice($original_price, $applied_coupon);
+                            $hasDiscount = $applied_coupon && $discounted_price < $original_price;
+                        ?>
+                            <div class="col-md-6 col-lg-4" data-product-id="<?= (int) $product['id'] ?>" data-price="<?= htmlspecialchars($discounted_price) ?>">
+                                <div class="dn-product-card">
+                                    <div class="dn-product-img">
+                                        <i class="ti ti-heart dn-product-fav" data-heart-id="<?= (int) $product['id'] ?>" onclick="toggleFavorite(<?= (int) $product['id'] ?>)"></i>
+                                        <img src="<?= htmlspecialchars($product['imageURL']) ?>" alt="<?= htmlspecialchars($product['productname']) ?>">
                                     </div>
-                                    <div class="rating mb-2">
-                                        <span class="star" data-star="1" onclick="setRating(<?= htmlspecialchars($product['id']) ?>, 1)">★</span>
-                                        <span class="star" data-star="2" onclick="setRating(<?= htmlspecialchars($product['id']) ?>, 2)">★</span>
-                                        <span class="star" data-star="3" onclick="setRating(<?= htmlspecialchars($product['id']) ?>, 3)">★</span>
-                                        <span class="star" data-star="4" onclick="setRating(<?= htmlspecialchars($product['id']) ?>, 4)">★</span>
-                                        <span class="star" data-star="5" onclick="setRating(<?= htmlspecialchars($product['id']) ?>, 5)">★</span>
-                                        <span class="rating-value" data-rating-id="<?= htmlspecialchars($product['id']) ?>">(0)</span>
-                                    </div>
-                                    <p class="card-text"><?= htmlspecialchars($product['descriptions']) ?></p>
-                                    <div class="price mt-auto">
-                                        <?php
-                                        if ($applied_coupon && $discounted_price < $original_price) {
-                                            echo 'Price: <span class="price-original">$' . number_format($original_price, 2) . '</span>';
-                                            echo '<span class="price-discounted">$' . number_format($discounted_price, 2) . '</span>';
-                                        } else {
-                                            echo 'Price: $' . number_format($original_price, 2);
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="d-flex justify-content-between mt-2">
-                                        <button class="btn btn-purple text-white" onclick="addToCart(<?= htmlspecialchars($product['id']) ?>)"><i class="bi bi-cart"></i> Add to Cart</button>
-                                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
+                                    <div class="dn-product-body">
+                                        <div class="dn-product-name" onclick="viewDetails(<?= (int) $product['id'] ?>)"><?= htmlspecialchars($product['productname']) ?></div>
+                                        <div class="dn-product-price-row">
+                                            <span class="dn-product-price">$<?= number_format($hasDiscount ? $discounted_price : $original_price, 2) ?></span>
+                                            <?php if ($hasDiscount): ?>
+                                                <span class="dn-product-was">$<?= number_format($original_price, 2) ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="dn-product-rating">
+                                            <?= dn_stars($product['avg_rating']) ?>
+                                            <span class="count">(<?= (int) $product['review_count'] ?>)</span>
+                                        </div>
+                                        <button class="dn-add-cart-btn" onclick="addToCart(<?= (int) $product['id'] ?>)">
+                                            <i class="ti ti-shopping-cart"></i> Add to Cart
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="col-12">
+                            <p class="text-center text-muted">No products available.</p>
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="col-12">
-                        <p class="text-center text-muted">No products available.</p>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-function toggleFavorite(productId) {
-    const heart = document.querySelector(`[data-heart-id="${productId}"]`);
-    heart.classList.toggle('bi-heart');
-    heart.classList.toggle('bi-heart-fill');
-}
-
-function setRating(productId, rating) {
-    const stars = document.querySelectorAll(`[data-product-id="${productId}"] .star`);
-    const ratingValue = document.querySelector(`[data-rating-id="${productId}"]`);
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.classList.add('filled');
-        } else {
-            star.classList.remove('filled');
-        }
-    });
-    ratingValue.textContent = `(${rating})`;
-}
-
-function addToCart(productId) {
-    alert(`Added product ${productId} to cart!`);
-}
-
-function viewDetails(productId) {
-    alert(`Viewing details for product ${productId}`);
-}
-
-document.getElementById('priceRange').addEventListener('input', function() {
-    const priceValue = this.value;
-    document.getElementById('priceValue').textContent = `$1 - $${priceValue}`;
-    const cards = document.querySelectorAll('[data-product-id]');
-
-    cards.forEach(card => {
-        const priceText = card.querySelector('.price').textContent;
-        const priceMatch = priceText.match(/\$([\d.]+)/g);
-        const price = parseFloat(priceMatch[priceMatch.length - 1].replace('$', ''));
-        card.style.display = price <= priceValue ? '' : 'none';
+document.getElementById('priceRange').addEventListener('input', function () {
+    document.getElementById('priceValue').textContent = this.value;
+    const maxPrice = parseFloat(this.value);
+    document.querySelectorAll('#productList [data-product-id]').forEach(card => {
+        const price = parseFloat(card.dataset.price);
+        card.style.display = price <= maxPrice ? '' : 'none';
     });
 });
 
-document.getElementById('search').addEventListener('input', function() {
-    const searchValue = this.value.toLowerCase().trim();
-    const searchWords = searchValue.split(/\s+/).filter(word => word.length > 0);
-    const cards = document.querySelectorAll('[data-product-id]');
-
-    cards.forEach(card => {
-        const productName = card.querySelector('.card-title').textContent.toLowerCase();
-        const matchesAllWords = searchWords.every(word => productName.includes(word));
-        card.style.display = matchesAllWords ? '' : 'none';
+document.getElementById('search').addEventListener('input', function () {
+    const query = this.value.toLowerCase().trim();
+    document.querySelectorAll('#productList [data-product-id]').forEach(card => {
+        const name = card.querySelector('.dn-product-name').textContent.toLowerCase();
+        card.style.display = name.includes(query) ? '' : 'none';
     });
 });
 </script>

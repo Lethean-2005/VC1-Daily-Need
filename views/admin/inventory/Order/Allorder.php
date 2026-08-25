@@ -93,7 +93,7 @@ $closedOrders = $data['closedOrders'] ?? [];
                 <div class="flex justify-between items-center">
                     <div class="flex items-center space-x-4">
                         <div class="bg-teal-500 p-3 rounded-full">
-                            <i class="fas fa-shopping-cart text-white text-xl"></i>
+                            <i class="ti ti-shopping-cart text-white text-xl"></i>
                         </div>
                         <div>
                             <h2 class="text-3xl font-extrabold text-white tracking-tight">All Orders</h2>
@@ -102,7 +102,7 @@ $closedOrders = $data['closedOrders'] ?? [];
                     </div>
                     <div class="flex items-center space-x-2">
                         <button onclick="exportToCSV()" class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center">
-                            <i class="fas fa-download mr-2"></i> Export Orders
+                            <i class="ti ti-download mr-2"></i> Export Orders
                         </button>
                     </div>
                 </div>
@@ -113,18 +113,18 @@ $closedOrders = $data['closedOrders'] ?? [];
                 <div class="flex items-center space-x-2">
                     <div class="relative">
                         <input type="text" id="search" placeholder="Search orders..." class="pl-10 pr-4 py-2 rounded-lg bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-300">
-                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                        <i class="ti ti-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                     </div>
                     <div class="flex items-center space-x-2">
                         <input type="date" id="startDate" class="px-3 py-2 rounded-lg bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-300">
                         <span class="text-gray-600">to</span>
                         <input type="date" id="endDate" class="px-3 py-2 rounded-lg bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-300">
-                        <button onclick="filterByDate()" class="px-3 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700"><i class="fas fa-filter"></i></button>
+                        <button onclick="filterByDate()" class="px-3 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700"><i class="ti ti-filter"></i></button>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <button onclick="bulkCancelOrders()" class="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled id="bulkCancelBtn"><i class="fas fa-ban mr-1"></i> Cancel Selected</button>
-                    <button onclick="bulkDeleteOrders()" class="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled id="bulkDeleteBtn"><i class="fas fa-trash mr-1"></i> Delete Selected</button>
+                    <button onclick="bulkCancelOrders()" class="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled id="bulkCancelBtn"><i class="ti ti-ban mr-1"></i> Cancel Selected</button>
+                    <button onclick="bulkDeleteOrders()" class="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled id="bulkDeleteBtn"><i class="ti ti-trash mr-1"></i> Delete Selected</button>
                 </div>
             </div>
 
@@ -793,34 +793,34 @@ function renderOrderTable($orders, $tabPrefix) {
                         <td class="py-3 px-2 w-28 whitespace-nowrap text-sm text-gray-700 truncate"><?php echo htmlspecialchars(date('M d, Y', strtotime($order['orderdate']))); ?></td>
                         <td class="py-3 px-2 w-16 whitespace-nowrap relative">
                             <button class="text-gray-600 hover:text-teal-600 transition text-2xl p-2 rounded-full hover:bg-gray-100" onclick="toggleDropdown('dropdown-<?php echo $tabPrefix; ?>-<?php echo $order['id']; ?>')">
-                                <i class="fas fa-ellipsis-v"></i>
+                                <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div id="dropdown-<?php echo $tabPrefix; ?>-<?php echo $order['id']; ?>" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl z-10 border border-gray-200">
                                 <button onclick="showDetails('<?php echo $index + 1; ?>', '<?php echo htmlspecialchars($order['product_name'] ?? 'Unknown Product'); ?>', '<?php echo htmlspecialchars($order['username'] ?? 'Unknown User'); ?>', '<?php echo htmlspecialchars($order['user_profile'] ?? 'https://i.pravatar.cc/40'); ?>', 'Loc <?php echo htmlspecialchars($order['location_id'] ?? 'N/A'); ?>', '<?php echo htmlspecialchars($order['orderstatus']); ?>', '<?php echo htmlspecialchars(date('M d, Y H:i', strtotime($order['orderdate']))); ?>', '<?php echo htmlspecialchars(date('M d, Y', strtotime($order['orderdate']))); ?>', '<?php echo number_format($order['totalprice'], 2); ?>')"
                                     class="flex items-center px-4 py-3 text-sm text-blue-600 hover:bg-blue-50 transition-colors duration-200 w-full text-left">
-                                    <i class="fas fa-eye mr-3 text-lg"></i> View
+                                    <i class="ti ti-eye mr-3 text-lg"></i> View
                                 </button>
                                 <button onclick="showEdit('<?php echo $order['id']; ?>', '<?php echo htmlspecialchars($order['orderstatus']); ?>')"
                                     class="flex items-center px-4 py-3 text-sm text-green-600 hover:bg-green-50 transition-colors duration-200 w-full text-left">
-                                    <i class="fas fa-edit mr-3 text-lg"></i> Edit
+                                    <i class="ti ti-edit mr-3 text-lg"></i> Edit
                                 </button>
                                 <button onclick="showMessage('<?php echo $order['id']; ?>')"
                                     class="flex items-center px-4 py-3 text-sm text-purple-600 hover:bg-purple-50 transition-colors duration-200 w-full text-left">
-                                    <i class="fas fa-envelope mr-3 text-lg"></i> Message
+                                    <i class="ti ti-mail mr-3 text-lg"></i> Message
                                 </button>
                                 <?php if ($order['orderstatus'] === 'Returned'): ?>
                                     <button onclick="showReturn('<?php echo $order['id']; ?>', '<?php echo htmlspecialchars($order['return_details'] ?? 'No return details available'); ?>', '<?php echo htmlspecialchars($order['return_type'] ?? 'Refund'); ?>')"
                                         class="flex items-center px-4 py-3 text-sm text-indigo-600 hover:bg-indigo-50 transition-colors duration-200 w-full text-left">
-                                        <i class="fas fa-undo mr-3 text-lg"></i> Review Return
+                                        <i class="ti ti-arrow-back-up mr-3 text-lg"></i> Review Return
                                     </button>
                                 <?php endif; ?>
                                 <button onclick="cancelOrder('<?php echo $order['id']; ?>')"
                                     class="flex items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200 w-full text-left">
-                                    <i class="fas fa-ban mr-3 text-lg"></i> Cancel
+                                    <i class="ti ti-ban mr-3 text-lg"></i> Cancel
                                 </button>
                                 <button onclick="deleteOrder('<?php echo $order['id']; ?>')"
                                     class="flex items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200 w-full text-left">
-                                    <i class="fas fa-trash mr-3 text-lg"></i> Delete
+                                    <i class="ti ti-trash mr-3 text-lg"></i> Delete
                                 </button>
                             </div>
                         </td>

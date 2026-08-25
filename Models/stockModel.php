@@ -3,7 +3,7 @@ class StockModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     // Fetch stock history (both stockIn and stockOut) with product image (unchanged)

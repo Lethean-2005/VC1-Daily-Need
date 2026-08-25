@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     <!-- [Head] Start -->
   <head>
@@ -12,22 +12,22 @@
     <meta name="author" content="CodedThemes">
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="../../../assets/images/Daily.jpg" type="image/x-icon"> 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" id="main-font-link">
     <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="../../../assets/fonts/tabler-icons.min.css" >
+    <link rel="stylesheet" href="/assets/fonts/tabler-icons.min.css" >
     <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="../../../assets/fonts/feather.css" >
+    <link rel="stylesheet" href="/assets/fonts/feather.css" >
     <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="../../../assets/fonts/fontawesome.css" >
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css" >
     <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="../../../assets/fonts/material.css" >
+    <link rel="stylesheet" href="/assets/fonts/material.css" >
     <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="../../../assets/css/style.css" id="main-style-link" >
-    <link rel="stylesheet" href="../../../assets/css/style-preset.css" >
+    <link rel="stylesheet" href="/assets/css/style.css" id="main-style-link" >
+    <link rel="stylesheet" href="/assets/css/style-preset.css" >
     <!-- link bootstrab -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../../assets/css/plugins/register.css">
+    <link rel="stylesheet" href="/assets/css/plugins/register.css">
     <style>
       .logo-lg{
         width: 55%;

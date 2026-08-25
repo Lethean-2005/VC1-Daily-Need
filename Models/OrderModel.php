@@ -3,7 +3,7 @@ class OrderModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     public function createOrder($user_id, $payment_method_id, $location_id, $total_price, $order_status, $currency) {

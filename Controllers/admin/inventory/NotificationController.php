@@ -1,4 +1,4 @@
-<?php
-    class NotificationController extends BaseadminController{
+﻿<?php
+    class NotificationController extends BaseAdminController{
         
     }

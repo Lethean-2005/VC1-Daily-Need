@@ -227,7 +227,7 @@ foreach ($cartItems as $item) {
             <div class="row">
               <!-- Cart Items Section -->
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="/product" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>CONTINUE SHOPPING</a></h5>
+                <h5 class="mb-3"><a href="/product" class="text-body"><i class="ti ti-arrow-narrow-left me-2"></i>CONTINUE SHOPPING</a></h5>
                 <hr>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -280,7 +280,7 @@ foreach ($cartItems as $item) {
                                 ?>
                               </h5>
                             </div>
-                            <a href="#" class="remove-item" data-product-id="<?php echo $productId; ?>" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                            <a href="#" class="remove-item" data-product-id="<?php echo $productId; ?>" style="color: #cecece;"><i class="ti ti-trash-alt"></i></a>
                           </div>
                         </div>
                       </div>
@@ -347,9 +347,9 @@ foreach ($cartItems as $item) {
 
                       <p class="small mb-2">PAYMENT TYPE</p>
                       <div class="payment-methods">
-                        <a href="#" class="payment-option text-white" data-method="Mastercard"><i class="fab fa-cc-mastercard fa-2x"></i></a>
-                        <a href="#" class="payment-option text-white selected" data-method="Visa"><i class="fab fa-cc-visa fa-2x"></i></a>
-                        <a href="#" class="payment-option text-white" data-method="Amex"><i class="fab fa-cc-amex fa-2x"></i></a>
+                        <a href="#" class="payment-option text-white" data-method="Mastercard"><i class="ti ti-credit-card fa-2x"></i></a>
+                        <a href="#" class="payment-option text-white selected" data-method="Visa"><i class="ti ti-credit-card fa-2x"></i></a>
+                        <a href="#" class="payment-option text-white" data-method="Amex"><i class="ti ti-credit-card fa-2x"></i></a>
                         <a href="#" class="payment-option text-white" data-method="ScanQRCode">
                           <img src="/assets/images/QR.jpg" class="scan-qr-icon" alt="Scan QR Code">
                         </a>
@@ -508,7 +508,7 @@ function removeFromCart(productId) {
       if (remainingItems.length === 0) {
         const cartSection = document.querySelector('.col-lg-7');
         cartSection.innerHTML = `
-          <h5 class="mb-3"><a href="/product" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+          <h5 class="mb-3"><a href="/product" class="text-body"><i class="ti ti-arrow-narrow-left me-2"></i>Continue shopping</a></h5>
           <hr>
           <div class="alert alert-warning" role="alert">
             No items in your cart. <a href="/product" class="alert-link">Go back to products</a>.

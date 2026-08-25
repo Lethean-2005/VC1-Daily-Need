@@ -3,7 +3,7 @@ class TransactionModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     public function createTransaction($order_id, $payment_method, $amount) {

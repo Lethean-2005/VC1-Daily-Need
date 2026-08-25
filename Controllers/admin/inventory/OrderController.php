@@ -1,5 +1,5 @@
-<?php
-class OrderController extends BaseadminController {
+﻿<?php
+class OrderController extends BaseAdminController {
     private $orderModel;
 
     public function __construct() {
@@ -481,7 +481,7 @@ class OrderController extends BaseadminController {
                 $this->orderModel->saveMessage($orderId, $senderId, $receiverId, $messageContent);
             }
 
-            // ✅ Send to Telegram after customer sends message
+            // âœ… Send to Telegram after customer sends message
             $this->sendTelegramChatMessage($senderUsername, $messageContent, $orderId);
         }
 
@@ -530,13 +530,13 @@ class OrderController extends BaseadminController {
         $botToken = '8388937134:AAGooYX9MzhqzCG4OA9wyPpTSTFPOgpz668';
         $chatId = '1461253065';
 
-        $message = "<b>🛒 New Order Placed</b>\n";
-        $message .= "🆔 <b>Order ID:</b> " . $order['order_id'] . "\n";
-        $message .= "👤 <b>User ID:</b> " . $order['user_id'] . "\n";
-        $message .= "💰 <b>Total:</b> " . number_format($order['totalprice'], 2) . " " . strtoupper($order['payments']) . "\n";
-        $message .= "📍 <b>Location ID:</b> " . $order['location_id'] . "\n";
-        $message .= "📦 <b>Status:</b> " . $order['orderstatus'] . "\n";
-        $message .= "🕒 <b>Date:</b> " . date('M d, Y H:i');
+        $message = "<b>ðŸ›’ New Order Placed</b>\n";
+        $message .= "ðŸ†” <b>Order ID:</b> " . $order['order_id'] . "\n";
+        $message .= "ðŸ‘¤ <b>User ID:</b> " . $order['user_id'] . "\n";
+        $message .= "ðŸ’° <b>Total:</b> " . number_format($order['totalprice'], 2) . " " . strtoupper($order['payments']) . "\n";
+        $message .= "ðŸ“ <b>Location ID:</b> " . $order['location_id'] . "\n";
+        $message .= "ðŸ“¦ <b>Status:</b> " . $order['orderstatus'] . "\n";
+        $message .= "ðŸ•’ <b>Date:</b> " . date('M d, Y H:i');
 
         $url = "https://api.telegram.org/bot$botToken/sendMessage";
         $data = [
@@ -561,11 +561,11 @@ class OrderController extends BaseadminController {
         $botToken = '8388937134:AAGooYX9MzhqzCG4OA9wyPpTSTFPOgpz668';
         $chatId = '1461253065';
 
-        $message = "<b>💬 New Chat Message</b>\n";
-        $message .= "👤 <b>Sender:</b> " . htmlspecialchars($username) . "\n";
-        $message .= "🆔 <b>Order ID:</b> " . htmlspecialchars($orderId) . "\n";
-        $message .= "💬 <b>Message:</b> " . htmlspecialchars($messageContent) . "\n";
-        $message .= "🕒 <b>Date:</b> " . date('M d, Y H:i');
+        $message = "<b>ðŸ’¬ New Chat Message</b>\n";
+        $message .= "ðŸ‘¤ <b>Sender:</b> " . htmlspecialchars($username) . "\n";
+        $message .= "ðŸ†” <b>Order ID:</b> " . htmlspecialchars($orderId) . "\n";
+        $message .= "ðŸ’¬ <b>Message:</b> " . htmlspecialchars($messageContent) . "\n";
+        $message .= "ðŸ•’ <b>Date:</b> " . date('M d, Y H:i');
 
         $url = "https://api.telegram.org/bot$botToken/sendMessage";
         $data = [

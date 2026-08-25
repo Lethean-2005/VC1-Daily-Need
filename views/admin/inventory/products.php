@@ -204,7 +204,7 @@ if (isset($_SESSION['user_id'])) : ?>
             <a href="/add-product" class="btn btn-primary">+ Add New Product</a>
             <button id="export-excel" class="btn btn-secondary">Export to Excel</button>
         </div>
-        <span id="notification-bell" class="bell-icon bi bi-bell" title="Stock Alerts" data-bs-toggle="modal" data-bs-target="#lowStockModal">
+        <span id="notification-bell" class="bell-icon ti ti-bell" title="Stock Alerts" data-bs-toggle="modal" data-bs-target="#lowStockModal">
             <span id="notification-count" class="notification-count"></span>
         </span>
     </div>
@@ -278,22 +278,22 @@ if (isset($_SESSION['user_id'])) : ?>
                         <td>
                             <span class="stock-quantity"><?= htmlspecialchars($product['stockquantity']) ?></span>
                             <?php if ($isLowStock): ?>
-                                <i class="bi bi-exclamation-triangle text-danger ms-2 icon-ring" title="Low Stock Alert"></i>
+                                <i class="ti ti-alert-triangle text-danger ms-2 icon-ring" title="Low Stock Alert"></i>
                             <?php endif; ?>
                         </td>
                         <td class="d-none d-md-table-cell"><?= htmlspecialchars($product['descriptions']) ?></td>
                         <td class="text-center">
                             <div class="dropdown">
                                 <button class="btn border-0 p-1" type="button" id="dropdownMenuButton<?= $product['id'] ?>" data-bs-toggle="dropdown" data-bs-popper="static" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>
+                                    <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton<?= $product['id'] ?>">
                                     <li><a class="dropdown-item" href="/products/view/<?= urlencode($product['id']) ?>">
-                                        <i class="bi bi-eye"></i> View</a></li>
+                                        <i class="ti ti-eye"></i> View</a></li>
                                     <li><a class="dropdown-item" href="/products/edit/<?= urlencode($product['id']) ?>">
-                                        <i class="bi bi-pencil"></i> Edit</a></li>
+                                        <i class="ti ti-pencil"></i> Edit</a></li>
                                     <li><a class="dropdown-item text-danger" href="/products/delete/<?= urlencode($product['id']) ?>">
-                                        <i class="bi bi-trash"></i> Delete</a></li>
+                                        <i class="ti ti-trash"></i> Delete</a></li>
                                 </ul>
                             </div>
                         </td>

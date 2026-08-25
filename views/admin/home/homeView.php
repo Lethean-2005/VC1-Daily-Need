@@ -1,4 +1,4 @@
-    <title>Dashboard</title>
+﻿    <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnBUiED" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJCLha2" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: 'Open Sans', Arial, sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
@@ -422,7 +422,7 @@
                 <div class="col-md-6 col-xl-3 mb-3">
                     <div class="card stylish-card">
                         <div class="card-body">
-                            <h6 class="card-title-small"><i class="fas fa-eye icon-blue"></i> Total Views</h6>
+                            <h6 class="card-title-small"><i class="ti ti-eye icon-blue"></i> Total Views</h6>
                             <h4 class="card-value">4,42,236 <span class="badge trend-badge-blue"><i class="ti ti-trending-up"></i> 59.3%</span></h4>
                             <p class="card-footer-text">Total viewer <span class="text-blue-accent">35,000</span> tracking</p>
                         </div>
@@ -431,7 +431,7 @@
                 <div class="col-md-6 col-xl-3 mb-3">
                     <div class="card stylish-card">
                         <div class="card-body">
-                            <h6 class="card-title-small"><i class="fas fa-users icon-green"></i> Total Users</h6>
+                            <h6 class="card-title-small"><i class="ti ti-users icon-green"></i> Total Users</h6>
                             <h4 class="card-value"><?php echo number_format($totalUsers); ?> <span class="badge trend-badge-green"><i class="ti ti-trending-up"></i> <?php echo number_format($percentageUsers, 1); ?>%</span></h4>
                             <p class="card-footer-text">Total users <span class="text-green-accent"><?php echo number_format($totalUsers); ?></span> tracking</p>
                         </div>
@@ -440,7 +440,7 @@
                 <div class="col-md-6 col-xl-3 mb-3">
                     <div class="card stylish-card">
                         <div class="card-body">
-                            <h6 class="card-title-small"><i class="fas fa-shopping-cart icon-orange"></i> Total Orders</h6>
+                            <h6 class="card-title-small"><i class="ti ti-shopping-cart icon-orange"></i> Total Orders</h6>
                             <h4 class="card-value"><?php echo number_format($totalOrders); ?> <span class="badge trend-badge-orange"><i class="ti ti-trending-<?php echo $percentageOrders >= 0 ? 'up' : 'down'; ?>"></i> <?php echo number_format(abs($percentageOrders), 1); ?>%</span></h4>
                             <p class="card-footer-text">Total orders <span class="text-orange-accent"><?php echo number_format($extraOrders); ?></span> tracking</p>
                         </div>
@@ -449,7 +449,7 @@
                 <div class="col-md-6 col-xl-3 mb-3">
                     <div class="card stylish-card">
                         <div class="card-body">
-                            <h6 class="card-title-small"><i class="bi bi-cash icon-red"></i> Total Sales</h6>
+                            <h6 class="card-title-small"><i class="ti ti-cash icon-red"></i> Total Sales</h6>
                             <h4 class="card-value">$<?php echo number_format($totalSales, 2); ?> <span class="badge trend-badge-red"><i class="ti ti-trending-<?php echo $percentageSales >= 0 ? 'up' : 'down'; ?>"></i> <?php echo number_format(abs($percentageSales), 1); ?>%</span></h4>
                             <p class="card-footer-text">Total sale <span class="text-red-accent">$<?php echo number_format($extraSales, 2); ?></span> tracking</p>
                         </div>
@@ -624,24 +624,24 @@
                 </div>
             </div>
           <!-- Weather app -->
-           <section id="weather-section" class="weather-section container my-4" style="background-image: url(/views/assets/images/BgW.png); background-repeat: no-repeat; background-size: cover;">
-                <div class="card p-4 shadow-sm" style="background-image: url(/views/assets/images/tumblr_nxdjfcoSmW1s08qivo1_400.gif); background-repeat: no-repeat; background-size: cover;">
+           <section id="weather-section" class="weather-section container my-4" style="background-image: url(/assets/images/BgW.png); background-repeat: no-repeat; background-size: cover;">
+                <div class="card p-4 shadow-sm" style="background-image: url(/assets/images/tumblr_nxdjfcoSmW1s08qivo1_400.gif); background-repeat: no-repeat; background-size: cover;">
                     <div class="row align-items-center">
                         <div class="col-md-6 text-start">
                             <h2 id="weather-district-name" class="display-6 " style="color: white; font-weight:bold;">Some City</h2>
                             <p class="lead" id="weather-day-of-week">Monday</p>
                             <div class="mb-2">
-                                <i class="bi bi-droplet-half me-2"></i> <span id="weather-humidity">50%</span>
+                                <i class="ti ti-droplet-half me-2"></i> <span id="weather-humidity">50%</span>
                             </div>
                             <div class="mb-2">
-                                <i class="bi bi-wind me-2"></i> <span id="weather-wind">East, 20 km/h</span>
+                                <i class="ti ti-wind me-2"></i> <span id="weather-wind">East, 20 km/h</span>
                             </div>
                             <div>
-                                <i class="bi bi-arrow-down-up me-2"></i> <span id="weather-pressure">1010 hPa</span>
+                                <i class="ti ti-arrows-up-down me-2"></i> <span id="weather-pressure">1010 hPa</span>
                             </div>
                         </div>
                         <div class="col-md-6 text-end">
-                            <p id="weather-temp" class="display-1 fw-bold">+20 °C</p>
+                            <p id="weather-temp" class="display-1 fw-bold">+20 Â°C</p>
                             <img id="weather-icon" src="/views//assets//images/Weather.png" alt="Weather Icon" class="img-fluid" style="max-height: 150px;">
                             <p id="weather-description" class="lead mt-2">Sunny with Clouds</p>
                         </div>
@@ -666,56 +666,56 @@
                         <option value="Prek Pnov">Prek Pnov</option>
                         <option value="Kamboul">Kamboul</option>
                     </select>
-                        <i class="fas fa-chevron-down select-arrow"></i>
+                        <i class="ti ti-chevron-down select-arrow"></i>
                 </div>
                 <div class="row mt-4 g-2 justify-content-center">
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Sun</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Sunny" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+25°C</p>
+                            <p class="mb-0 fw-bold">+25Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Mon</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Partly Cloudy" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+19°C</p>
+                            <p class="mb-0 fw-bold">+19Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Tue</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Cloudy" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+19°C</p>
+                            <p class="mb-0 fw-bold">+19Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Wed</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Cloudy" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+15°C</p>
+                            <p class="mb-0 fw-bold">+15Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Thu</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Cloudy" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+10°C</p>
+                            <p class="mb-0 fw-bold">+10Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Fri</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Rainy" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+8°C</p>
+                            <p class="mb-0 fw-bold">+8Â°C</p>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="card text-center p-2 forecast-card">
                             <p class="mb-1 text-uppercase">Sat</p>
                             <img src="http://googleusercontent.com/file_content/0" alt="Sunny" class="forecast-icon">
-                            <p class="mb-0 fw-bold">+20°C</p>
+                            <p class="mb-0 fw-bold">+20Â°C</p>
                         </div>
                     </div>
                 </div>
@@ -907,7 +907,7 @@
                             dayElem.textContent = staticForecast[index].day;
                             iconElem.src = `https://openweathermap.org/img/wn/${staticForecast[index].icon}@2x.png`;
                             iconElem.alt = staticForecast[index].day;
-                            tempElem.textContent = `${staticForecast[index].temp}°C`;
+                            tempElem.textContent = `${staticForecast[index].temp}Â°C`;
                         }
                     });
                 }
@@ -923,8 +923,8 @@
                                 districtName.textContent = khan.name;
                                 weatherDayOfWeek.textContent = getDayOfWeek(new Date()); // Get current day of the week
                                 weatherDescription.textContent = `${data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)}`; // Capitalize first letter
-                                weatherTemp.textContent = `${Math.round(data.main.temp)} °C`; // Round temperature
-                                // weatherFeelsLike.textContent = `Feels like: ${Math.round(data.main.feels_like)}°C`; // This element is removed in the new design
+                                weatherTemp.textContent = `${Math.round(data.main.temp)} Â°C`; // Round temperature
+                                // weatherFeelsLike.textContent = `Feels like: ${Math.round(data.main.feels_like)}Â°C`; // This element is removed in the new design
                                 weatherHumidity.textContent = `${data.main.humidity}%`;
                                 weatherWind.textContent = `${Math.round(data.wind.speed * 3.6)} km/h`; // Convert m/s to km/h
                                 weatherPressure.textContent = `${data.main.pressure} hPa`; // Pressure from API

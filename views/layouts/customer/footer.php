@@ -1,129 +1,155 @@
-
-<footer class="text-white pt-5" style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #1e2a4a 0%, #121c36 100%); border-top: 1px solid rgba(74, 144, 226, 0.2);">
-  <div class="container py-4">
+﻿<footer class="dn-footer">
+  <div class="container py-5">
     <div class="row g-4">
-
-      <!-- Company Info -->
-      <div class="col-lg-3 col-md-6 col-12">
-        <h6 class="text-white fw-semibold pb-2 mb-3 position-relative">Influenca
-          <span class="d-block position-absolute" style="height: 3px; width: 40px; background: linear-gradient(90deg, #4ad1e6, #2a8be8); bottom: 0; left: 0;"></span>
-        </h6>
-        <p class="text-white-50 lh-lg mb-4">We create digital experiences that inspire and transform businesses for the modern world.</p>
-        <!-- App Badges Section -->
-        <div class="d-flex align-items-center justify-content-start justify-content-md-center mt-3" style="gap: 0px;">
-          <a href="#" class="app-badge d-inline-block">
-            <img src="/views/assets/images/google.png" alt="Google Play" class="img-fluid" style="height: 90px; width: auto; max-width: 100%;">
-          </a>
-          <a href="#" class="app-badge d-inline-block">
-            <img src="/views/assets/images/appStore.png" alt="App Store" class="img-fluid" style="height: 65px; width: 65px;  border-radius: 100px;">
-          </a>
-        </div>
-      </div>
-
-      <!-- Products -->
-      <div class="col-lg-2 col-md-6 col-6">
-        <h6 class="text-white fw-semibold pb-2 mb-3 position-relative">Products
-          <span class="d-block position-absolute" style="height: 3px; width: 40px; background: linear-gradient(90deg, #4ad1e6, #2a8be8); bottom: 0; left: 0;"></span>
-        </h6>
-        <ul class="list-unstyled">
-          <li><a href="/" class="d-block text-white-50 py-1">Shops</a></li>
-          <li><a href="/product" class="d-block text-white-50 py-1">Products</a></li>
-          <li><a href="/product_detail" class="d-block text-white-50 py-1">Product Details</a></li>
-          <li><a href="/about" class="d-block text-white-50 py-1">About</a></li>
-          <li><a href="/contact" class="d-block text-white-50 py-1">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div class="col-lg-2 col-md-6 col-6">
-        <h6 class="text-white fw-semibold pb-2 mb-3 position-relative">Resources
-          <span class="d-block position-absolute" style="height: 3px; width: 40px; background: linear-gradient(90deg, #4ad1e6, #2a8be8); bottom: 0; left: 0;"></span>
-        </h6>
-        <ul class="list-unstyled">
-          <li><a href="/blog" class="d-block text-white-50 py-1">Blog</a></li>
-          <li><a href="/help-center" class="d-block text-white-50 py-1">Help Center</a></li>
-          <li><a href="/tutorials" class="d-block text-white-50 py-1">Tutorials</a></li>
-          <li><a href="/webinars" class="d-block text-white-50 py-1">Webinars</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="col-lg-3 col-md-6 col-12 mt-md-0 mt-3">
-        <h6 class="text-white fw-semibold pb-2 mb-3 position-relative">Contact Us
-          <span class="d-block position-absolute" style="height: 3px; width: 40px; background: linear-gradient(90deg, #4ad1e6, #2a8be8); bottom: 0; left: 0;"></span>
-        </h6>
-        <ul class="list-unstyled text-white-50 lh-lg">
-          <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-info"></i>London Eye, South Bank, London SE1 7PB, UK</li>
-          <li class="mb-2"><i class="fas fa-envelope me-2 text-info"></i><a href="mailto:info@influenca.com" class="text-white-50">info@influenca.com</a></li>
-          <li class="mb-2"><i class="fas fa-phone me-2 text-info"></i><a href="tel:+442045771234" class="text-white-50">+44 20 4577 1234</a></li>
-          <li><i class="fas fa-clock me-2 text-info"></i>Mon-Fri: 9AM-6PM</li>
-        </ul>
-      </div>
-
-
-<!-- Newsletter -->
-      <div class="col-lg-2 col-md-6 col-12 mt-md-0 mt-3">
-        <h6 class="text-white fw-semibold pb-2 mb-3 position-relative">Newsletter
-          <span class="d-block position-absolute" style="height: 3px; width: 40px; background: linear-gradient(90deg, #4ad1e6, #2a8be8); bottom: 0; left: 0;"></span>
-        </h6>
-        <p class="text-white-50">Subscribe for updates</p>
-        <form class="mb-3">
-          <div class="input-group input-group-sm">
-            <input type="email" class="form-control bg-transparent text-white border border-info" placeholder="Your email">
-            <button class="btn btn-info" type="submit"><i class="fas fa-paper-plane"></i></button>
-          </div>
-        </form>
+      <div class="col-lg-4 col-12">
+        <img src="/assets/images/logo.png" alt="Daily Needs" class="dn-footer-logo">
+        <p class="dn-footer-desc">Daily Needs brings your everyday groceries and household essentials together in one place &mdash; quality products, honest prices, delivered fast.</p>
         <div class="d-flex gap-2">
-          <a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="btn btn-outline-info btn-sm rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="ti ti-brand-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
         </div>
+      </div>
+
+      <div class="col-lg-2 col-6">
+        <h6 class="dn-footer-heading">Shop</h6>
+        <ul class="list-unstyled">
+          <li><a href="/">Home</a></li>
+          <li><a href="/product">All Products</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6">
+        <h6 class="dn-footer-heading">Categories</h6>
+        <ul class="list-unstyled">
+          <li><a href="/houeshold">Household</a></li>
+          <li><a href="/beverage">Beverages</a></li>
+          <li><a href="/snacks">Snacks</a></li>
+          <li><a href="/cooking">Cooking</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6">
+        <h6 class="dn-footer-heading">Account</h6>
+        <ul class="list-unstyled">
+          <li><a href="/F_login">Login</a></li>
+          <li><a href="/F_register">Register</a></li>
+          <li><a href="/order_h">My Orders</a></li>
+          <li><a href="/viewcart">View Cart</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6">
+        <h6 class="dn-footer-heading">Legal</h6>
+        <ul class="list-unstyled">
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+        </ul>
       </div>
     </div>
 
-    <hr class="border-secondary my-4">
+    <hr class="dn-footer-divider">
+
+    <div class="row align-items-center g-3">
+      <div class="col-lg-6">
+        <div class="d-flex flex-wrap gap-2">
+          <span class="dn-footer-pill"><i class="ti ti-shield-check"></i> Secure Checkout</span>
+          <span class="dn-footer-pill"><i class="ti ti-certificate"></i> Verified Sellers</span>
+          <span class="dn-footer-pill"><i class="ti ti-star"></i> 4.8/5 Customer Rating</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <form class="d-flex gap-2 justify-content-lg-end">
+          <input type="email" class="dn-footer-input" placeholder="Get product updates...">
+          <button type="submit" class="dn-footer-subscribe">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <hr class="dn-footer-divider">
 
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-        <p class="text-white-50 small mb-0">© 2023 Influenca. All rights reserved.</p>
+        <p class="dn-footer-copy">&copy; 2026 Daily Needs. All rights reserved.</p>
       </div>
       <div class="col-md-6 text-center text-md-end">
-        <div class="d-flex justify-content-center justify-content-md-end gap-3 flex-wrap">
-          <a href="/privacy" class="text-white-50 small">Privacy Policy</a>
-          <a href="/terms" class="text-white-50 small">Terms</a>
-          <a href="/cookies" class="text-white-50 small">Cookies</a>
+        <div class="d-flex justify-content-center justify-content-md-end gap-4 flex-wrap">
+          <a href="/status" class="dn-footer-legal">Status</a>
+          <a href="/sitemap" class="dn-footer-legal">Sitemap</a>
+          <a href="/accessibility" class="dn-footer-legal">Accessibility</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Required Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dphymj3dLDA7EFz0UReyS5FrH4VyYk8R5asFzYQuCF3R3XVboUydD7C7yKj81M8TAl5gIdY8cMLWuzxR4eU4PQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <style>
-  @media (max-width: 768px) {
-    footer .col-md-6 {
-      margin-bottom: 1.5rem;
-    }
-    footer .app-badge img {
-      height: 80px !important;
-    }
+  .dn-footer {
+    background: #fff;
+    border-top: 1px solid #eee;
+    font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
   }
-  
-  @media (max-width: 480px) {
-    footer .col-6 {
-      width: 50%;
-    }
-    footer .app-badge img {
-      height: 70px !important;
-    }
-    footer .input-group {
-      width: 100%;
-    }
-    footer .d-flex.gap-2 {
-      justify-content: center;
-    }
+  .dn-footer-logo { height: 44px; width: auto; margin-bottom: 14px; }
+  .dn-footer-desc { color: #777; font-size: .9rem; line-height: 1.6; max-width: 340px; margin-bottom: 16px; }
+  .dn-footer .d-flex.gap-2 a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: background .2s ease-in-out, color .2s ease-in-out;
   }
+  .dn-footer .d-flex.gap-2 a:hover { background: #1f2a1f; color: #fff; border-color: #1f2a1f; }
+  .dn-footer-heading { font-weight: 700; font-size: .95rem; color: #1f2a1f; margin-bottom: 16px; }
+  .dn-footer ul li { margin-bottom: 10px; }
+  .dn-footer ul li a { color: #777; font-size: .9rem; text-decoration: none; transition: color .2s ease-in-out; }
+  .dn-footer ul li a:hover { color: #1f2a1f; }
+  .dn-footer-divider { border-color: #eee; margin: 8px 0 20px; }
+
+  .dn-footer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4f3ef;
+    color: #555;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 5px;
+  }
+  .dn-footer-pill i { color: #d98c4a; }
+
+  .dn-footer-input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 14px;
+    font-size: .82rem;
+    width: 220px;
+    max-width: 100%;
+  }
+  .dn-footer-input:focus { outline: none; border-color: #d98c4a; }
+  .dn-footer-subscribe {
+    background: #d98c4a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: .82rem;
+    white-space: nowrap;
+    transition: background .2s ease-in-out;
+  }
+  .dn-footer-subscribe:hover { background: #bf7638; }
+
+  .dn-footer-copy { color: #999; font-size: .85rem; margin: 0; }
+  .dn-footer-legal { color: #999; font-size: .85rem; text-decoration: none; }
+  .dn-footer-legal:hover { color: #1f2a1f; text-decoration: underline; }
 </style>

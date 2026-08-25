@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -234,7 +234,7 @@ endif;
             .product-name {
                 font-size: 1.2rem;
                 margin-bottom: 5px;
-                font-family: serif;
+                font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             }
 
             .price {
@@ -396,31 +396,31 @@ endif;
     <!-- Cards of Products -->
     <div class="cards">
         <div class="card">
-            <img src="/views/assets/images/Snacks (7)/Buldak hot.png" alt="Hydrating Moisturizer">
+            <img src="/assets/images/Snacks (7)/Buldak hot.png" alt="Hydrating Moisturizer">
             <div class="info">Deeply nourish your skin with our hydrating moisturizer. Perfect for all skin types.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Snacks (7)/Mama Pork pack.png" alt="Vitamin C Serum">
+            <img src="/assets/images/Snacks (7)/Mama Pork pack.png" alt="Vitamin C Serum">
             <div class="info">Brighten your complexion with our powerful Vitamin C serum.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Snacks (7)/Good Noodle.png" alt="Sunscreen SPF 50">
+            <img src="/assets/images/Snacks (7)/Good Noodle.png" alt="Sunscreen SPF 50">
             <div class="info">Protect your skin from harmful UV rays with our lightweight sunscreen.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Clothing(7)/Fineline Liquid Detergent.png" alt="Hydrating Moisturizer">
+            <img src="/assets/images/Clothing(7)/Fineline Liquid Detergent.png" alt="Hydrating Moisturizer">
             <div class="info">Deeply nourish your skin with our hydrating moisturizer. Perfect for all skin types.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Clothing(7)/Comfort Blue.png" alt="Vitamin C Serum">
+            <img src="/assets/images/Clothing(7)/Comfort Blue.png" alt="Vitamin C Serum">
             <div class="info">Brighten your complexion with our powerful Vitamin C serum.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Clothing(7)/Pao Pink Detergent.png" alt="Sunscreen SPF 50">
+            <img src="/assets/images/Clothing(7)/Pao Pink Detergent.png" alt="Sunscreen SPF 50">
             <div class="info">Protect your skin from harmful UV rays with our lightweight sunscreen.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Tissue (6)/keepo purple.png" alt="Sunscreen SPF 50">
+            <img src="/assets/images/Tissue (6)/keepo purple.png" alt="Sunscreen SPF 50">
             <div class="info">Protect your skin from harmful UV rays with our lightweight sunscreen.</div>
         </div>
         <div class="card">
@@ -428,7 +428,7 @@ endif;
             <div class="info">Protect your skin from harmful UV rays with our lightweight sunscreen.</div>
         </div>
         <div class="card">
-            <img src="/views/assets/images/Feminine Hygiene (10)/ACNES.png" alt="Sunscreen SPF 50">
+            <img src="/assets/images/Feminine Hygiene (10)/ACNES.png" alt="Sunscreen SPF 50">
             <div class="info">Protect your skin from harmful UV rays with our lightweight sunscreen.</div>
         </div>
     </div>
@@ -632,7 +632,7 @@ endif;
             <!-- Inline CSS -->
             <style>
                 body {
-                    font-family: Arial, sans-serif;
+                    font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
                     margin: 0;
                     padding: 0;
                     overflow-x: hidden;
@@ -724,7 +724,7 @@ endif;
                 </div>
             </div>
             <div class="cart-item-total">$${(item.price * item.quantity).toFixed(2)}</div>
-            <div class="delete-btn"><i class="fa fa-trash"></i></div>
+            <div class="delete-btn"><i class="ti ti-trash"></i></div>
         `;
                         cartItemsContainer.appendChild(cartItem);
 

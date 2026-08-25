@@ -3,7 +3,7 @@ class CartModel {
     private $db;
     
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     public function addItem($user_id, $product_id, $quantity = 1) {

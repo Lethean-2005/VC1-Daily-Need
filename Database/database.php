@@ -3,10 +3,21 @@
 
     class Database {
         private $db;
+        private static $instance = null;
+
+        // Single shared connection, using one source of truth for credentials
+        // instead of every Model constructing its own `new Database(...)`.
+        public static function connect() {
+            if (self::$instance === null) {
+                $config = require __DIR__ . "/../Config/database.php";
+                self::$instance = new self($config['host'], $config['dbname'], $config['username'], $config['password'], $config['port'] ?? 3306);
+            }
+            return self::$instance;
+        }
 
         // Constructor to connect to database
-        public function __construct($hostname, $dbname, $username, $password) {
-            $dsn = "mysql:host=$hostname;dbname=$dbname;charset=UTF8";
+        public function __construct($hostname, $dbname, $username, $password, $port = 3306) {
+            $dsn = "mysql:host=$hostname;port=$port;dbname=$dbname;charset=UTF8";
 
             try {
                 $this->db = new PDO($dsn, $username, $password);

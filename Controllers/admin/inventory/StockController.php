@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 require_once 'Models/StockModel.php';
 
-class StockController extends BaseadminController {
+class StockController extends BaseAdminController {
     private $stockModel;
 
     public function __construct() {

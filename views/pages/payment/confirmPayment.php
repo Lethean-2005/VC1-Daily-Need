@@ -102,7 +102,7 @@ if (isset($_SESSION['user_id'])) :
         transform: translate(-50%, -50%);
     }
     h1 {
-        font-family: monospace;
+        font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
     }
     @keyframes slide {
         0% {

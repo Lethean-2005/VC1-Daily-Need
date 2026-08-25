@@ -3,7 +3,7 @@ class PaymentModelF {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     public function savePaymentMethod($user_id, $card_number, $card_holder_name, $expiry_date, $cvv, $currency, $payment_method_type = null) {

@@ -11,7 +11,7 @@ $products = $data['products'] ?? []; // Available products for exchange
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
         }
         body {
             background: linear-gradient(to right, #e6f0fa, #f9e6ff);
@@ -33,7 +33,7 @@ $products = $data['products'] ?? []; // Available products for exchange
         .info-item, .p-name {
             font-size: 14px;
             color: black;
-            font-family: 'poppins', sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
         }
         .iii {
             display: flex !important;
@@ -98,12 +98,12 @@ $products = $data['products'] ?? []; // Available products for exchange
                                     <form action="/delete_order_from_history" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this order?');">
                                         <input type="hidden" name="orderId" value="<?php echo $order['id']; ?>">
                                         <button type="submit" class="btn p-0 border-0 bg-transparent" title="Canceled Order">
-                                            <i class="bi bi-trash-fill text-black bg-white rounded-circle d-inline-flex align-items-center justify-content-center hover-red"
+                                            <i class="ti ti-trash text-black bg-white rounded-circle d-inline-flex align-items-center justify-content-center hover-red"
                                             style="width: 30px; height: 30px; cursor: pointer;"></i>
                                         </button>
                                     </form>
                                 <?php else: ?>
-                                    <i class="bi bi-chat-left-text text-primary bg-white rounded-circle d-inline-flex align-items-center justify-content-center hover-effect" 
+                                    <i class="ti ti-message-circle text-primary bg-white rounded-circle d-inline-flex align-items-center justify-content-center hover-effect" 
                                         style="width: 30px; height: 30px; cursor: pointer;" 
                                         title="View Messages" id="chatIcon" data-order-id="<?php echo $order['id']; ?>">
                                     </i>

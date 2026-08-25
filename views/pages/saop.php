@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])):
         body {
             background-color: #f5e6f5;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             margin-top: 50px;
         }
         .shop {

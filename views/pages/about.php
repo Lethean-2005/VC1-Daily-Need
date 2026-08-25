@@ -4,13 +4,16 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: Arial, sans-serif;
+        font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
         color: #333;
         line-height: 1.6;
+        background-color: #f4f3ef;
+        background-image: radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
+        background-size: 16px 16px;
     }
 
     h1,h2,h3,h4,h5,h6 {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
         font-weight: 700;
     }
 
@@ -202,8 +205,7 @@
 
     .col-md-9 {
         text-align: center;
-        margin-top: 30px;
-
+        margin-top: 0;
         margin-left: 30vh;
     }
 
@@ -246,376 +248,205 @@
 }
 </style>
 
-<!-- Profile Section -->
-<section class="profile py-5" style="background-color:rgb(234, 245, 248);">
+<!-- About Hero -->
+<style>
+.dn-about-hero { background: #eef6f5; padding: 110px 0 90px; overflow: hidden; }
+.dn-about-hero .container { max-width: 1200px; }
+.dn-about-hero-text h1 { font-size: 2.6rem; font-weight: 800; color: #0F5553; margin-bottom: 6px; }
+.dn-about-hero-text h2 { font-size: 1.7rem; font-weight: 800; color: #14110d; line-height: 1.3; margin-bottom: 16px; }
+.dn-about-hero-text p { color: #666; font-size: 1rem; max-width: 420px; margin-bottom: 28px; }
+.dn-about-hero-actions { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
+.dn-about-cta {
+    display: inline-flex;
+    align-items: center;
+    background: #0F5553;
+    color: #fff;
+    font-weight: 700;
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 15px 26px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background .2s ease-in-out;
+}
+.dn-about-cta:hover { background: #0c433f; color: #fff; }
+.dn-about-play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    color: #0F5553;
+    font-size: 1rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,.08);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.dn-about-hero-img { width: 100%; max-width: 560px; display: block; margin: 0 auto; }
 
+.dn-about-trust {
+    position: relative;
+    z-index: 2;
+    margin-top: -60px;
+    margin-bottom: 60px;
+}
+.dn-about-trust-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 16px 34px rgba(0,0,0,.08);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+}
+.dn-about-trust-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(15,85,83,.08);
+    color: #0F5553;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+.dn-about-trust-card .t { font-weight: 700; font-size: .88rem; color: #14110d; display: block; }
+.dn-about-trust-card .s { font-size: .76rem; color: #9a9a92; }
+</style>
+<section class="dn-about-hero">
     <div class="container">
-        <div class="row align-items-center flex-md-row-reverse">
-            <!-- 🖼 Image Section -->
-            <div class="col-md-5 text-center mb-4 mb-md-0">
-                <div class="profile-img-wrapper">
-                    <img id="profileImg" src="views/assets/about-images/card.png" alt="Profile Picture" class="profile-img img-fluid">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 dn-about-hero-text">
+                <h1>Daily Needs</h1>
+                <h2>Your everyday grocery &amp; essentials solution</h2>
+                <p>Shop quality groceries and household products, priced fairly and delivered to your door.</p>
+                <div class="dn-about-hero-actions">
+                    <a href="/product" class="dn-about-cta">Shop Now</a>
+                    <a href="/product" class="dn-about-play" title="Browse products"><i class="ti ti-player-play"></i></a>
                 </div>
             </div>
-            <!-- 📝 Text Section -->
-            <div class="col-md-7">
-                <h2 id="sectionTitle" class="mb-3 fw-bold text-success">We Are Your Favorite Store</h2>
-                <p id="sectionDescription" class="text-muted lead mb-3">Discover high-quality products at great prices, curated for your satisfaction.</p>
-                <p id="sectionAdditionalInfo" class="text-muted mb-4">We prioritize trust, innovation, and community to deliver exceptional value.</p>
-                <a href="/product" class="btn btn-success btn-lg mt-3 px-4 py-2 rounded-pill shadow-sm">Explore Products</a>
+            <div class="col-lg-6 text-center">
+                <img src="/assets/images/pos-computer.png" alt="Daily Needs POS system" class="dn-about-hero-img">
             </div>
         </div>
     </div>
 </section>
-<!-- Stats Section -->
-<section class="stats py-5 bg-dark text-white">
-    <div class="container">
-        <div class="row text-center text-md-start align-items-center">
-            <!-- Title Section -->
-            <div class="col-md-3 mb-3 mb-md-0">
-                <h4 class="fw-bold mb-4 fs-4 text-white">Numbers Speak <br>for Themselves!</h4>
-                <p class="text-white small">Impressive stats about our products and categories!</p>
-            </div>
 
-
-            <!-- Stats Item 1 -->
-            <div class="col-md-3 stat text-center mb-3 mb-md-0">
-                <div class="icon-overlay mb-3">
-                    <i class="bi bi-boxes text-success icon-large"></i>
-                </div>
-                <h3 class="fw-bold fs-3" id="owned-products">0+</h3>
-                <h6 class="text-light">Owned Products</h6>
+<div class="container dn-about-trust">
+    <div class="row g-3">
+        <div class="col-6 col-md-3">
+            <div class="dn-about-trust-card">
+                <span class="dn-about-trust-icon"><i class="ti ti-shield-check"></i></span>
+                <div><span class="t">100% Genuine</span><span class="s">Authentic &amp; trusted brands</span></div>
             </div>
-            <!-- Stats Item 2 -->
-            <div class="col-md-3 stat text-center mb-3 mb-md-0">
-                <div class="icon-overlay mb-3">
-                    <i class="bi bi-tags text-success icon-large"></i>
-                </div>
-                <h3 class="fw-bold fs-3" id="curated-products">0+</h3>
-                <h6 class="text-light">Curated Products</h6>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="dn-about-trust-card">
+                <span class="dn-about-trust-icon"><i class="ti ti-user-check"></i></span>
+                <div><span class="t">Quality Checked</span><span class="s">Every item inspected</span></div>
             </div>
-
-            <!-- Stats Item 3 -->
-            <div class="col-md-3 stat text-center mb-3 mb-md-0">
-                <div class="icon-overlay mb-3">
-                    <i class="bi bi-grid text-success icon-large"></i>
-                </div>
-                <h3 class="fw-bold fs-3" id="product-categories">0+</h3>
-                <h6 class="text-light">Product Categories</h6>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="dn-about-trust-card">
+                <span class="dn-about-trust-icon"><i class="ti ti-truck"></i></span>
+                <div><span class="t">Fast Delivery</span><span class="s">Right to your doorstep</span></div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="dn-about-trust-card">
+                <span class="dn-about-trust-icon"><i class="ti ti-arrow-back-up"></i></span>
+                <div><span class="t">Easy Returns</span><span class="s">Hassle-free returns</span></div>
             </div>
         </div>
     </div>
-</section>
-
+</div>
 <!-- Product Cards Section -->
-<div class="col-md-9">
+<style>
+.dn-cat-products .dn-product-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px;
+    background-color: #eae8e2;
+    color: #1f2a1f;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+.dn-cat-products .dn-product-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0,0,0,.12); }
+.dn-cat-products .dn-product-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.dn-cat-products .dn-product-eyebrow { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: .6; }
+.dn-cat-products .dn-product-fav {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.55); cursor: pointer; color: #555; font-size: .95rem; flex: 0 0 auto;
+}
+.dn-cat-products .dn-product-fav.active { color: #d64545; }
+.dn-cat-products .dn-product-visual { position: relative; display: flex; align-items: center; justify-content: center; height: 110px; margin: 6px 0; }
+.dn-cat-products .dn-product-visual .glow {
+    position: absolute; width: 130px; height: 130px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 70%); filter: blur(2px);
+}
+.dn-cat-products .dn-product-visual img { position: relative; max-height: 100px; max-width: 85%; object-fit: contain; }
+.dn-cat-products .dn-product-name { font-weight: 700; font-size: 1rem; line-height: 1.3; margin-bottom: 4px; cursor: pointer; }
+.dn-cat-products .dn-product-tagline { font-size: .78rem; opacity: .65; line-height: 1.4; margin-bottom: 14px; }
+.dn-cat-products .dn-product-footer { display: flex; align-items: center; justify-content: space-between; }
+.dn-cat-products .dn-product-price { font-weight: 700; font-size: 1.05rem; }
+.dn-cat-products .dn-cart-fab {
+    width: 34px; height: 34px; border-radius: 50%; border: none;
+    background: #1f2a1f; color: #fff; display: flex; align-items: center; justify-content: center;
+    transition: background .2s ease-in-out;
+}
+.dn-cat-products .dn-cart-fab:hover { background: #0F5553; color: #fff; }
+</style>
+<div class="col-md-9 dn-cat-products">
     <h2 class="mb-4">Our Category</h2>
-    <div class="row px-3 py-4" id="productList">
-        <!-- Product Card 1 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="1">
-            <div class="card text-start shadow-sm d-flex flex-column" style="border-radius: 12px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; border-top-left-radius: 12px; border-top-right-radius: 12px; position: relative;">
-                    <img src="/views/assets/images/Snacks (7)/Buldak hot.png" alt="Floral Serum" class="img-fluid" style="max-height: 100%; object-fit: contain;">
-                    <button class="view-details-btn" onclick="viewDetails(1)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Buldak hot</h6>
-                        <i class="bi bi-heart" data-heart-id="1" onclick="toggleFavorite(1)"></i>
+    <div class="row g-3 px-3 py-4" id="productList">
+        <?php
+        $dn_about_products = [
+            ['id' => 1, 'name' => 'Buldak hot',                    'tag' => 'Snacks',        'tagline' => 'Fiery instant noodles, ready in minutes.', 'img' => 'buldak-hot.png',       'price' => 50.99],
+            ['id' => 2, 'name' => 'Good Noodle',                   'tag' => 'Snacks',        'tagline' => 'A quick, satisfying pantry staple.',       'img' => 'good-noodle.png',      'price' => 40.99],
+            ['id' => 3, 'name' => 'Mama Pork pack',                'tag' => 'Snacks',        'tagline' => 'Classic pork-flavor instant noodles.',     'img' => 'mama-pork.png',        'price' => 40.99],
+            ['id' => 4, 'name' => 'Comfort Blue',                  'tag' => 'Household',     'tagline' => 'Everyday laundry care for the family.',    'img' => 'comfort-blue.png',     'price' => 60.99],
+            ['id' => 5, 'name' => 'Fineline Liquid Detergent',     'tag' => 'Household',     'tagline' => 'Deep clean for fabrics, every wash.',      'img' => 'fineline-detergent.png','price' => 55.99],
+            ['id' => 6, 'name' => 'Pao Pink Detergent',            'tag' => 'Household',     'tagline' => 'Gentle formula, fresh-smelling clothes.',  'img' => 'pao-pink.png',         'price' => 42.99],
+            ['id' => 7, 'name' => 'Keepo Purple',                  'tag' => 'Tissue',        'tagline' => 'Soft, strong, and gentle on your skin.',   'img' => 'keepo-purple.png',     'price' => 48.99],
+            ['id' => 8, 'name' => 'Keepo Green',                   'tag' => 'Tissue',        'tagline' => 'Everyday softness for the whole family.',  'img' => 'keepo-green.png',      'price' => 52.99],
+            ['id' => 9, 'name' => 'ACNES',                         'tag' => 'Personal Care', 'tagline' => 'Gentle daily care for sensitive skin.',    'img' => 'acnes.png',            'price' => 49.99],
+        ];
+        ?>
+        <?php foreach ($dn_about_products as $p): ?>
+            <div class="col-md-4 col-sm-6" data-product-id="<?= $p['id'] ?>">
+                <div class="dn-product-card">
+                    <div class="dn-product-top">
+                        <span class="dn-product-eyebrow"><?= htmlspecialchars($p['tag']) ?></span>
+                        <i class="ti ti-heart dn-product-fav" data-heart-id="<?= $p['id'] ?>" onclick="toggleFavorite(<?= $p['id'] ?>)"></i>
                     </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(1, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(1, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(1, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(1, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(1, 5)">★</span>
-                        <span class="rating-value" data-rating-id="1">(0)</span>
+                    <div class="dn-product-visual">
+                        <div class="glow"></div>
+                        <img src="/assets/images/about/<?= htmlspecialchars($p['img']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                     </div>
-                    <p class="card-text">Hydrate your skin with this lightweight floral serum.</p>
-                    <div class="price mt-auto">Price: $50.99</div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(1)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white" style="border-radius: 8px;"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-
-
-                    </div>
-            </div>
-        </div>
-        <!-- card 2 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="2">
-            <div class="card text-start shadow-sm d-flex flex-column" style="border-radius: 12px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; border-top-left-radius: 12px; border-top-right-radius: 12px; position: relative;">
-                    <img src="/views/assets/images/Snacks (7)/Good Noodle.png" alt="Serum 2" class="img-fluid" style="max-height: 100%; object-fit: contain;">
-                    <button class="view-details-btn" onclick="viewDetails(2)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Good Noodle</h6>
-                        <i class="bi bi-heart" data-heart-id="2" onclick="toggleFavorite(2)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(2, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(2, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(2, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(2, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(2, 5)">★</span>
-                        <span class="rating-value" data-rating-id="2">(0)</span>
-                    </div>
-                    <p class="card-text">Revitalize your skin with this amazing serum.</p>
-                    <div class="price mt-auto">Price: $40.99</div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(2)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
+                    <div>
+                        <div class="dn-product-name" onclick="viewDetails(<?= $p['id'] ?>)"><?= htmlspecialchars($p['name']) ?></div>
+                        <div class="dn-product-tagline"><?= htmlspecialchars($p['tagline']) ?></div>
+                        <div class="dn-product-footer">
+                            <span class="dn-product-price">$<?= number_format($p['price'], 2) ?></span>
+                            <button class="dn-cart-fab" onclick="addToCart(<?= $p['id'] ?>)" title="Add to cart">
+                                <i class="ti ti-shopping-cart"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- card 3 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="3">
-            <div class="card text-start shadow-sm d-flex flex-column" style="border-radius: 12px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; border-top-left-radius: 12px; border-top-right-radius: 12px; position: relative;">
-                    <img src="/views/assets/images/Snacks (7)/Mama Pork pack.png" alt="Serum 3" class="img-fluid" style="max-height: 100%; object-fit: contain;">
-                    <button class="view-details-btn" onclick="viewDetails(3)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Mama Pork pack</h6>
-                        <i class="bi bi-heart" data-heart-id="3" onclick="toggleFavorite(3)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(3, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(3, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(3, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(3, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(3, 5)">★</span>
-                        <span class="rating-value" data-rating-id="3">(0)</span>
-                    </div>
-                    <p class="card-text">Nourish your skin with this amazing product.</p>
-    
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(3)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 4 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="4">
-            <div class="card text-start d-flex flex-column" style="border-radius: 10px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="/views/assets/images/Clothing(7)/Comfort Blue.png" alt="Serum 4" class="img-fluid">
-                    <button class="view-details-btn" onclick="viewDetails(4)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Comfort Blue</h6>
-                        <i class="bi bi-heart" data-heart-id="4" onclick="toggleFavorite(4)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(4, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(4, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(4, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(4, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(4, 5)">★</span>
-                        <span class="rating-value" data-rating-id="4">(0)</span>
-                    </div>
-                    <p class="card-text">Replenish your skin with this amazing serum.</p>
-                    <div class="price mt-auto">Price: $60.99</div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(4)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 5 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="5">
-            <div class="card text-start d-flex flex-column" style="border-radius: 10px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="/views/assets/images/Clothing(7)/Fineline Liquid Detergent.png" alt="Serum 5" class="img-fluid">
-                    <button class="view-details-btn" onclick="viewDetails(5)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Fineline Liquid Detergent</h6>
-                        <i class="bi bi-heart" data-heart-id="5" onclick="toggleFavorite(5)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(5, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(5, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(5, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(5, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(5, 5)">★</span>
-                        <span class="rating-value" data-rating-id="5">(0)</span>
-                    </div>
-
-                    <p class="card-text">Moisturize your skin with this floral serum.</p>
-                    <div class="price mt-auto">Price: $55.99</div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(5)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 6 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="6">
-            <div class="card text-start d-flex flex-column" style="border-radius: 10px; overflow: hidden; height: 100%;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="/views/assets/images/Clothing(7)/Pao Pink Detergent.png" alt="Serum 6" class="img-fluid">
-                    <button class="view-details-btn" onclick="viewDetails(6)">View Details</button>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Pao Pink Detergent</h6>
-                        <i class="bi bi-heart" data-heart-id="6" onclick="toggleFavorite(6)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(6, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(6, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(6, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(6, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(6, 5)">★</span>
-                        <span class="rating-value" data-rating-id="6">(0)</span>
-                    </div>
-                    <p class="card-text">A refreshing serum for daily use.</p>
-                    <div class="price mt-auto">Price: $42.99</div>
-                    <div class="d-flex justify-content-between mt-2">
-                        <button class="btn btn-purple text-white" onclick="addToCart(6)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 7 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="7">
-            <div class="card text-start" style="border-radius: 10px; overflow: hidden;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="/views/assets/images/Tissue (6)/keepo purple.png" alt="Serum 7" class="img-fluid" style="border-radius: 10px 10px 0 0;">
-                    <button class="view-details-btn" onclick="viewDetails(7)">View Details</button>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">keepo purple</h6>
-                        <i class="bi bi-heart" data-heart-id="7" onclick="toggleFavorite(7)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(7, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(7, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(7, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(7, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(7, 5)">★</span>
-
-                        <span class="rating-value" data-rating-id="7">(0)</span>
-                    </div>
-                    <p class="card-text">Hydrate and nourish with this serum.</p>
-                    <div class="price">Price: $48.99</div>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-purple text-white" onclick="addToCart(7)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 8 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="8">
-            <div class="card text-start" style="border-radius: 10px; overflow: hidden;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="views/assets/images/Tissue (6)/Keepo Green.png" alt="Serum 8" class="img-fluid" style="border-radius: 10px 10px 0 0;">
-                    <button class="view-details-btn" onclick="viewDetails(8)">View Details</button>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">Keepo Green</h6>
-                        <i class="bi bi-heart" data-heart-id="8" onclick="toggleFavorite(8)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(8, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(8, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(8, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(8, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(8, 5)">★</span>
-                        <span class="rating-value" data-rating-id="8">(0)</span>
-                    </div>
-                    <p class="card-text">A lightweight serum for all skin types.</p>
-                    <div class="price">Price: $52.99</div>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-purple text-white" onclick="addToCart(8)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product Card 9 -->
-        <div class="col-md-4 col-sm-6 mb-4" data-product-id="9">
-            <div class="card text-start" style="border-radius: 10px; overflow: hidden;">
-                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 180px; position: relative;">
-                    <img src="/views/assets/images/Feminine Hygiene (10)/ACNES.png" alt="Serum 9" class="img-fluid" style="border-radius: 10px 10px 0 0;">
-                    <button class="view-details-btn" onclick="viewDetails(9)">View Details</button>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="card-title">ACNES</h6>
-                        <i class="bi bi-heart" data-heart-id="9" onclick="toggleFavorite(9)"></i>
-                    </div>
-                    <div class="rating mb-2">
-                        <span class="star" data-star="1" onclick="setRating(9, 1)">★</span>
-                        <span class="star" data-star="2" onclick="setRating(9, 2)">★</span>
-                        <span class="star" data-star="3" onclick="setRating(9, 3)">★</span>
-                        <span class="star" data-star="4" onclick="setRating(9, 4)">★</span>
-                        <span class="star" data-star="5" onclick="setRating(9, 5)">★</span>
-                        <span class="rating-value" data-rating-id="9">(0)</span>
-                    </div>
-                    <p class="card-text">Glow up with this floral serum.</p>
-                    <div class="price">Price: $49.99</div>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-purple text-white" onclick="addToCart(9)"><i class="bi bi-cart"></i> Add to Cart</button>
-                        <button class="btn btn-green text-white"><i class="bi bi-check-circle"></i> Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-<!-- User Card Section -->
-<div class="container mt-5">
-    <div class="row text-center justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="small-card shadow-lg p-4 rounded-3 d-flex flex-column align-items-center transition-card" style="height: 270px; background: #fff;">
-                <div class="icon mb-3">
-                    <i class="fas fa-user-shield text-primary fs-3"></i>
-                </div>
-                <h6 class="fw-bold text-dark">Secure Transactions</h6>
-                <p class="text-muted text-center px-2">Your payments are encrypted and processed with top-tier security.</p>
-            </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="small-card shadow-lg p-4 rounded-3 d-flex flex-column align-items-center transition-card" style="height: 270px; background: #fff;">
-                <div class="icon mb-3">
-                    <i class="fas fa-globe text-success fs-3"></i>
-                </div>
-                <h6 class="fw-bold text-dark">Global Access</h6>
-                <p class="text-muted text-center px-2">Connect with clients and services worldwide with ease.</p>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="small-card shadow-lg p-4 rounded-3 d-flex flex-column align-items-center transition-card" style="height: 270px; background: #fff;">
-                <div class="icon mb-3">
-                    <i class="fas fa-headset text-warning fs-3"></i>
-                </div>
-                <h6 class="fw-bold text-dark">24/7 Support</h6>
-                <p class="text-muted text-center px-2">Our team is available anytime to assist you with your needs.</p>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
-<script src="/views/assets/js/about.js"></script>

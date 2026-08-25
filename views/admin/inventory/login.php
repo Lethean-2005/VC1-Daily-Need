@@ -90,13 +90,13 @@
         <form action="/authenticate" method="POST">
             <!-- Email Input -->
             <div class="form-group mb-3">
-                <i class="fas fa-envelope"></i>
+                <i class="ti ti-mail"></i>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Admin Email" required>
             </div>
 
             <!-- Password Input -->
             <div class="form-group mb-3">
-                <i class="fas fa-lock"></i>
+                <i class="ti ti-lock"></i>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
 

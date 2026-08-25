@@ -277,7 +277,7 @@ try {
                                         <td class="p-3">
                                             <div class="relative inline-block">
                                                 <button class="text-gray-500 hover:text-gray-700 p-2" onclick="toggleDropdown('dropdown-<?php echo $order['id']; ?>')">
-                                                    <i class="fas fa-ellipsis-v"></i>
+                                                    <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <div id="dropdown-<?php echo $order['id']; ?>" class="hidden absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                                                     <button onclick="showDetails('<?php echo $order['id']; ?>', '<?php echo htmlspecialchars($order['username'] ?? 'Unknown'); ?>', 
@@ -288,19 +288,19 @@ try {
                                                         '<?php echo htmlspecialchars($order['orderstatus']); ?>', 
                                                         '<?php echo number_format($order['totalprice'], 2); ?>')"
                                                         class="block px-3 py-2 hover:bg-gray-100 dropdown-item w-full text-left">
-                                                        <i class="fas fa-eye text-blue-600 mr-2"></i> View
+                                                        <i class="ti ti-eye text-blue-600 mr-2"></i> View
                                                     </button>
                                                     <button onclick="showEdit('<?php echo $order['id']; ?>', '<?php echo htmlspecialchars($order['orderstatus']); ?>')"
                                                         class="block px-3 py-2 hover:bg-gray-100 dropdown-item w-full text-left">
-                                                        <i class="fas fa-edit text-green-600 mr-2"></i> Edit
+                                                        <i class="ti ti-edit text-green-600 mr-2"></i> Edit
                                                     </button>
                                                     <!-- <button onclick="showMessage('<?php echo $order['id']; ?>')"
                                                         class="block px-3 py-2 hover:bg-gray-100 dropdown-item w-full text-left">
-                                                        <i class="fas fa-envelope text-purple-600 mr-2"></i> Message
+                                                        <i class="ti ti-mail text-purple-600 mr-2"></i> Message
                                                     </button> -->
                                                     <button onclick="showDelete('<?php echo $order['id']; ?>')"
                                                         class="block px-3 py-2 hover:bg-gray-100 dropdown-item w-full text-left">
-                                                        <i class="fas fa-trash text-red-600 mr-2"></i> Delete
+                                                        <i class="ti ti-trash text-red-600 mr-2"></i> Delete
                                                     </button>
                                                 </div>
                                             </div>

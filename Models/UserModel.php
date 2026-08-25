@@ -5,7 +5,7 @@ class UserModel {
 
     // initial to start connect to the database
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     // Fetch all users from the database

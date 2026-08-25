@@ -2,7 +2,7 @@
    <div style="text-align: center; margin-bottom: 25px;">
        <img id="profilePreview" src="/<?= $user['profile'] ?>" width="100" height="100" class="rounded-circle" style="object-fit: cover; border: 3px solid #ddd; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
        <label for="profile" class="btn btn-light btn-sm mt-2" style="cursor: pointer; border: 1px solid #ced4da; border-radius: 5px; font-size: 0.9em;">
-           <i class="bi bi-upload me-1"></i> Change Image
+           <i class="ti ti-upload me-1"></i> Change Image
            <input type="file" name="profile" id="profile" accept="image/*" style="display: none;">
        </label>
    </div>

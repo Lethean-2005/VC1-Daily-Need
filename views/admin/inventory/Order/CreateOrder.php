@@ -19,7 +19,7 @@ $locations = $data['locations'] ?? [];
             <div class="p-6 bg-[#2C4A6B] text-white border-b border-gray-200 shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="bg-teal-500 p-3 rounded-full">
-                        <i class="fas fa-plus text-white text-xl"></i>
+                        <i class="ti ti-plus text-white text-xl"></i>
                     </div>
                     <div>
                         <h2 class="text-3xl font-extrabold text-white tracking-tight">Create Purchase Order</h2>

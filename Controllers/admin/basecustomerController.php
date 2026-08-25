@@ -8,9 +8,9 @@
         protected function view($view, $data = []){
             extract($data);
             ob_start();
-            require "views/{$view}.php";
+            require __DIR__ . "/../../views/{$view}.php";
             $content = ob_get_clean();
-            require "views/layoutcust.php";
+            require __DIR__ . "/../../views/layoutcust.php";
         }
 
 

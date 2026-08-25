@@ -3,7 +3,7 @@ class ProductModel {
     private $db;
     
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
     
     public function getProducts() {
@@ -14,6 +14,74 @@ class ProductModel {
     public function getProductById($id) {
         $result = $this->db->query("SELECT * FROM products WHERE id = :id", ['id' => $id]);
         return $result->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Products with real aggregated review/sales stats, for the shop listing page.
+    public function getProductsWithStats($sort = 'newest') {
+        $orderBy = 'p.id DESC';
+        if ($sort === 'toprated') {
+            $orderBy = 'avg_rating DESC, review_count DESC';
+        } elseif ($sort === 'popular') {
+            $orderBy = 'units_sold DESC';
+        }
+
+        $result = $this->db->query(
+            "SELECT p.*,
+                    COALESCE(AVG(r.rating), 0) AS avg_rating,
+                    COUNT(DISTINCT r.id) AS review_count,
+                    COALESCE(SUM(oi.quantity), 0) AS units_sold
+             FROM products p
+             LEFT JOIN reviews r ON r.product_id = p.id
+             LEFT JOIN orderitems oi ON oi.product_id = p.id
+             GROUP BY p.id
+             ORDER BY $orderBy"
+        );
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Reviews for a single product, with the reviewer's username.
+    public function getReviewsForProduct($productId) {
+        $result = $this->db->query(
+            "SELECT r.*, u.username
+             FROM reviews r
+             JOIN users u ON u.id = r.user_id
+             WHERE r.product_id = :id
+             ORDER BY r.reviewdate DESC",
+            ['id' => $productId]
+        );
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Average rating + review count for a single product.
+    public function getReviewStats($productId) {
+        $result = $this->db->query(
+            "SELECT COALESCE(AVG(rating), 0) AS avg_rating, COUNT(*) AS review_count
+             FROM reviews WHERE product_id = :id",
+            ['id' => $productId]
+        );
+        return $result->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Other products in the same category, for the "more like this" strip.
+    public function getRelatedProducts($productId, $category, $limit = 5) {
+        $limit = (int) $limit;
+        $result = $this->db->query(
+            "SELECT * FROM products WHERE categories = :cat AND id != :id ORDER BY id LIMIT $limit",
+            ['cat' => $category, 'id' => $productId]
+        );
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Real per-category product counts, for the sidebar filter.
+    public function getCategoryCounts() {
+        $result = $this->db->query(
+            "SELECT categories, COUNT(*) AS total FROM products GROUP BY categories"
+        );
+        $counts = [];
+        foreach ($result->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $counts[$row['categories']] = (int) $row['total'];
+        }
+        return $counts;
     }
 
     public function addProduct($productName, $description, $category, $price, $stockQuantity, $imagePath) {

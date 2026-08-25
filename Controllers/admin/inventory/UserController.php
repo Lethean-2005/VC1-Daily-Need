@@ -1,7 +1,7 @@
-<?php
+﻿<?php
     require_once 'Models/UserModel.php';
     require_once 'Models/OrderModel.php';
-    class UserController extends BaseadminController {
+    class UserController extends BaseAdminController {
         private $users;
         private $orders;
 
@@ -40,7 +40,7 @@
                 $fileName = time() . "_" . basename($_FILES['profile']['name']);
                 $uploadDir = 'profiles/'; // Ensure this directory exists
         
-                // Create the directory if it doesn’t exist
+                // Create the directory if it doesnâ€™t exist
                 if (!is_dir($uploadDir)) {
                     mkdir($uploadDir, 0777, true);
                 }
@@ -102,7 +102,7 @@
         }
         public function order_all() {
             $orders = $this->orders->getAllOrders();
-            $this->view('admin/inventory/orders/All_order', ['orders' => $orders]);
+            $this->view('admin/inventory/Order/Allorder', ['orders' => $orders]);
         }
         
     }

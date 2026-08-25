@@ -25,6 +25,7 @@
     require_once "Controllers/admin/inventory/CartController.php";
     require_once "Controllers/admin/inventory/PaymentFrontController.php";
     require_once "Controllers/admin/page/OrderHistory.php";
+    require_once "Controllers/admin/page/SocialAuthController.php";
 
     $route = new Router();
     //home admin
@@ -78,6 +79,10 @@
     $route->get('/admin-login', [LoginController::class, 'login_admin']);
     $route->post('/authenticate', [LoginController::class, 'authenticate']);
     $route->get('/logout', [LoginController::class, 'logout']);
+
+    //social login
+    $route->get('/auth/google', [SocialAuthController::class, 'googleRedirect']);
+    $route->get('/auth/google/callback', [SocialAuthController::class, 'googleCallback']);
 
     //register management
     $route->get('/register', [RegisterController::class, 'register']);

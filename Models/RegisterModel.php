@@ -4,7 +4,7 @@ class RegisterModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
         
     }
 
@@ -20,8 +20,7 @@ class RegisterModel {
         if ($this->emailExists($email)) {
             return false; // Or you could throw an exception
         }
-        // Normalize role to 'users' if it's not 'users'
-        $role = ($role === 'users') ? 'users' : $role;
+        // $role is validated by the caller (RegisterController::store()) before reaching here
         $result = $this->db->query("INSERT INTO users (username, email, phone, password, profile, role) VALUES (:username, :email, :phone, :password, :profile, :role)",[
             'username' => $username,
             'email' => $email,

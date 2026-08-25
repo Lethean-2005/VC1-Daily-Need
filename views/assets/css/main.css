@@ -1,7 +1,7 @@
 
 body {
-    font-family: 'Poppins', sans-serif;
-    padding-top: 80px; /* Adjust based on navbar height */
+    font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
+    overflow-x: hidden;
 }
 /* For better visibility when navbar sticks */
 .navbar.sticky {

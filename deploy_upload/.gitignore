@@ -1,0 +1,24 @@
+# PHP
+vendor/
+composer.phar
+*.log
+error_log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+Config/oauth.php
+Config/database.php
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Local server misc
+*.pid

@@ -5,7 +5,7 @@ class SalesReportModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database("localhost", "dailyneed_db", "root", "");
+        $this->db = Database::connect();
     }
 
     // Define the method to fetch monthly sales data

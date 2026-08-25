@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) :
 
         body {
             background: linear-gradient(90deg, #f8e1e1 0%, #e1e1f8 100%);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
             color: #333;
             line-height: 1.6;
         }
@@ -600,13 +600,13 @@ if (isset($_SESSION['user_id'])) :
 
                             <!-- Only Dropdown Icon (No Button) -->
                             <div class="dropdown">
-                                <i class="bi bi-three-dots-vertical" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <i class="ti ti-dots-vertical" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton<?php echo $product['id']; ?>">
                                     <!-- Edit -->
                                     <li>
                                         <form method="GET" action="/products/edit/<?php echo $product['id']; ?>" class="px-3 m-0">
                                             <button type="submit" class="btn btn-link text-start w-100">
-                                                <i class="bi bi-pencil"></i> Edit
+                                                <i class="ti ti-pencil"></i> Edit
                                             </button>
                                         </form>
                                     </li>
@@ -615,14 +615,14 @@ if (isset($_SESSION['user_id'])) :
                                         <form method="POST" action="/products/delete/<?php echo $product['id']; ?>" class="px-3 m-0">
                                             <button type="submit" class="btn btn-link text-start w-100 text-danger"
                                                 onclick="return confirm('Are you sure you want to delete this product?');">
-                                                <i class="bi bi-trash"></i> Delete
+                                                <i class="ti ti-trash"></i> Delete
                                             </button>
                                         </form>
                                     </li>
                                     <!-- Add Product -->
                                     <li>
                                         <a href="/add-product" class="dropdown-item text-success">
-                                            <i class="bi bi-plus-circle"></i> Add Product
+                                            <i class="ti ti-circle-plus"></i> Add Product
                                         </a>
                                     </li>
                                 </ul>

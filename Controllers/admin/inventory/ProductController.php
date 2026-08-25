@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 require_once "Models/ProductModel.php";
-class ProductController extends BaseadminController {
+class ProductController extends BaseAdminController {
     private $products;
 
     public function __construct() {

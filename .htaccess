@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # If a real file or physical directory exists (like assets, uploads, profiles), serve it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Route all other traffic through index.php for your custom router
+    RewriteRule ^ index.php [L]
+</IfModule>

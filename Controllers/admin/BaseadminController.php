@@ -6,11 +6,22 @@
         //$view the view file to render
         //$data the data to be passed to the view
         protected function view($view, $data = []){
+            $this->requireAdmin();
             extract($data);
             ob_start();
-            require "views/{$view}.php";
+            require __DIR__ . "/../../views/{$view}.php";
             $content = ob_get_clean();
-            require "views/layoutAdmin.php";
+            require __DIR__ . "/../../views/layoutAdmin.php";
+        }
+
+        //Block access unless an authenticated admin session exists
+        protected function requireAdmin(){
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
+                $this->redirect('/admin-login');
+            }
         }
 
 

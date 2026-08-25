@@ -1,30 +1,39 @@
-<?php
+﻿<?php
 
 require_once "Models/RegisterModel.php";
 
-class RegisterController extends BaseadminController {
+class RegisterController extends BaseAdminController {
     private $registers;
 
     public function __construct() {
         $this->registers = new RegisterModel();
     }
 
-    // Display the registration form
+    // Display the registration form (admin-only: adds staff/admin accounts)
     public function register() {
+        $this->requireAdmin();
         require_once __DIR__ . '/../../../views/admin/inventory/register.php';
     }
 
     public function store() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         // Sanitize input data
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
         $phone = htmlspecialchars($_POST['phone']);
         $password = $_POST['password'];
-        $role = htmlspecialchars($_POST['role']);
-    
-        // fix role
-        $role = ($role === 'users') ? 'users' : $role;
-    
+
+        // This endpoint is shared by the public self-registration form (/F_register)
+        // and this admin-only "add user" form. Only trust a submitted role when the
+        // request itself comes from an authenticated admin; otherwise force 'users'
+        // so an anonymous request can never grant itself admin access.
+        $isAdminRequest = isset($_SESSION['user_id']) && ($_SESSION['user_role'] ?? '') === 'admin';
+        $requestedRole = htmlspecialchars($_POST['role'] ?? 'users');
+        $role = ($isAdminRequest && $requestedRole === 'admin') ? 'admin' : 'users';
+
         // Check if email already exists
         if ($this->registers->emailExists($email)) {
             $_SESSION['error'] = "This email is already registered!";

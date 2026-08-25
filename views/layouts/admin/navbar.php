@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -161,6 +161,121 @@ try {
             padding: 8px 12px;
         }
     }
+
+    /* Profile dropdown */
+    .dn-profile-trigger { display: flex; align-items: center; }
+    .dn-profile-avatar {
+        width: 34px; height: 34px; border-radius: 50%; object-fit: cover;
+        border: 2px solid #eee;
+    }
+    .dn-profile-avatar-lg { width: 42px; height: 42px; }
+    .dn-profile-menu {
+        width: 280px;
+        padding: 0;
+        border-radius: 12px;
+        border: 1px solid #eee;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,.12);
+    }
+    .dn-profile-menu-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+    .dn-profile-menu-id { flex: 1; min-width: 0; }
+    .dn-profile-name { margin: 0; font-size: .88rem; font-weight: 700; color: #1f2a1f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dn-profile-email { margin: 0; font-size: .75rem; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dn-role-badge {
+        flex-shrink: 0;
+        padding: 2px 9px;
+        border-radius: 20px;
+        font-size: .68rem;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    .dn-role-admin { background: #eef2ff; color: #4338ca; }
+    .dn-role-users { background: #f4f3ef; color: #555; }
+    .dn-profile-menu-section { padding: 6px 8px; border-top: 1px dashed #eee; }
+    .dn-profile-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 8px;
+        border-radius: 8px;
+        font-size: .85rem;
+        color: #333;
+        text-decoration: none;
+    }
+    .dn-profile-menu-item:hover { background: #f7f6f3; color: #333; }
+    .dn-profile-menu-item .flex-1 { flex: 1; }
+    .dn-profile-menu-item i:first-child { color: #999; font-size: 1rem; }
+    .dn-profile-menu-item .dn-chevron { color: #ccc; font-size: .85rem; }
+    .dn-profile-menu-item-danger { color: #dc2626; }
+    .dn-profile-menu-item-danger:hover { background: #fef2f2; color: #dc2626; }
+    .dn-profile-menu-item-danger i { color: #dc2626 !important; }
+    .dn-profile-menu-footer {
+        border-top: 1px dashed #eee;
+        padding: 10px 16px;
+        text-align: center;
+        font-size: .7rem;
+        color: #aaa;
+    }
+
+    /* Sidebar â€” dark reskin via the theme's own CSS variables, floated with a margin */
+    .dn-sidebar {
+        --pc-sidebar-background: #0f172a;
+        --pc-sidebar-color: #cbd5e1;
+        --pc-sidebar-color-rgb: 203, 213, 225;
+        --pc-sidebar-active-color: #6366f1;
+        --pc-sidebar-caption-color: #64748b;
+        --pc-sidebar-border: rgba(255, 255, 255, 0.08);
+        --pc-sidebar-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        left: 1rem !important;
+        top: 1rem !important;
+        bottom: 1rem !important;
+        height: calc(100vh - 2rem) !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+    }
+    .dn-sidebar-header,
+    .dn-sidebar-content { background: transparent !important; box-shadow: none !important; }
+    .dn-sidebar-content.navbar-content { height: calc(100vh - 2rem - 60px - 66px) !important; }
+    .pc-header { left: calc(260px + 2rem) !important; }
+    .pc-container,
+    .pc-footer { margin-left: calc(260px + 2rem) !important; }
+    .pc-sidebar.pc-sidebar-hide ~ .pc-header { left: 0 !important; }
+    .pc-sidebar.pc-sidebar-hide ~ .pc-footer,
+    .pc-sidebar.pc-sidebar-hide ~ .pc-container { margin-left: 0 !important; }
+    .dn-sidebar-brand { display: flex; align-items: center; gap: 10px; text-align: left !important; }
+    .dn-sidebar-brand-icon {
+        display: flex; align-items: center; justify-content: center;
+        width: 36px; height: 36px; border-radius: 10px;
+        background: #6366f1; color: #fff; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .dn-sidebar-brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .dn-sidebar-brand-name { font-size: .88rem; font-weight: 700; color: #fff; }
+    .dn-sidebar-brand-sub { font-size: .72rem; color: #94a3b8; }
+    .dn-sidebar .pc-caption label {
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+    }
+    .dn-sidebar .pc-link { border-radius: 8px; margin: 0 12px; }
+    .dn-sidebar-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dn-sidebar-footer-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .dn-sidebar-footer-id { flex: 1; min-width: 0; }
+    .dn-sidebar-footer-name { margin: 0; font-size: .8rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .dn-sidebar-footer-role { margin: 0; font-size: .7rem; color: #94a3b8; text-transform: capitalize; }
+    .dn-sidebar-footer-logout { color: #94a3b8; flex-shrink: 0; }
+    .dn-sidebar-footer-logout:hover { color: #fff; }
 </style>
 
 <div class="loader-bg">
@@ -170,37 +285,40 @@ try {
 </div>
 
 <!-- [ Sidebar Menu ] start -->
-<nav class="pc-sidebar" style="border-right: none !important; border-left: none !important;">
-    <div class="navbar-wrapper" style="background:white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+<nav class="pc-sidebar dn-sidebar">
+    <div class="navbar-wrapper dn-sidebar-header">
         <div class="m-header">
-            <a href="/admin" class="b-brand" style="text-align:center;">
-                <img 
-                    src="/assets/images/Daily.jpg" 
-                    onerror="this.onerror=null; this.src='/views/assets/images/userPlaceHolder.png';" 
-                    class="img-fluid logo-lg" 
-                    alt="logo" 
-                    style="width: 55px; height: 55px; border-radius: 50%;">
-                <span style="margin-left: 20px; color: black;">DAILY NEEDS</span>
+            <a href="/admin" class="b-brand dn-sidebar-brand">
+                <span class="dn-sidebar-brand-icon"><i class="ti ti-building-warehouse"></i></span>
+                <span class="dn-sidebar-brand-text">
+                    <span class="dn-sidebar-brand-name">Daily Needs</span>
+                    <span class="dn-sidebar-brand-sub">Admin</span>
+                </span>
             </a>
         </div>
     </div>
-    <div class="navbar-content" style="background:white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+    <div class="navbar-content dn-sidebar-content">
         <ul class="pc-navbar">
+            <li class="pc-item pc-caption"><label>Main Menu</label></li>
             <li class="pc-item">
                 <a href="/admin" class="pc-link">
                     <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
                     <span class="pc-mtext">Dashboard</span>
                 </a>
             </li>
-            <li class="pc-item pc-caption">
-                <label>Components</label>
-                <i class="ti ti-dashboard"></i>
+            <li class="pc-item">
+                <a href="/somepage" class="pc-link">
+                    <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
+                    <span class="pc-mtext">Sample Page</span>
+                </a>
             </li>
+
+            <li class="pc-item pc-caption"><label>Catalog</label></li>
             <li class="pc-item pc-hasmenu">
                 <a href="#!" class="pc-link">
-                    <span class="pc-micon"><i class="ti ti-stack"></i></span>
+                    <span class="pc-micon"><i class="ti ti-box"></i></span>
                     <span class="pc-mtext">Product Management</span>
-                    <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    <span class="pc-arrow"><i class="ti ti-chevron-right"></i></span>
                 </a>
                 <ul class="pc-submenu" id="order-submenu" style="display: none;">
                     <li class="pc-item">
@@ -217,24 +335,24 @@ try {
             </li>
             <li class="pc-item pc-hasmenu">
                 <a href="#!" class="pc-link">
-                    <span class="pc-micon"><i class="ti ti-stack"></i></span>
+                    <span class="pc-micon"><i class="ti ti-transfer-in"></i></span>
                     <span class="pc-mtext">Stock Management</span>
-                    <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    <span class="pc-arrow"><i class="ti ti-chevron-right"></i></span>
                 </a>
                 <ul class="pc-submenu" id="order-submenu" style="display: none;">
                     <li class="pc-item">
                         <a class="pc-link" href="/stock">
-                            <i class="bi bi-box-seam"></i> All Stocks
+                            <i class="ti ti-box"></i> All Stocks
                         </a>
                     </li>
                     <li class="pc-item">
                         <a class="pc-link" href="/stock/in">
-                            <i class="bi bi-box-arrow-in-down"></i> Stock In
+                            <i class="ti ti-arrow-down-circle"></i> Stock In
                         </a>
                     </li>
                     <li class="pc-item">
                         <a class="pc-link" href="/stock/out">
-                            <i class="bi bi-box-arrow-up"></i> Stock Out
+                            <i class="ti ti-arrow-up-circle"></i> Stock Out
                         </a>
                     </li>
                 </ul>
@@ -242,38 +360,40 @@ try {
             <li class="pc-item">
                 <a href="/salesreport" class="pc-link">
                     <span class="pc-micon"><i class="ti ti-report"></i></span>
-                    <span class="pc-mtext">Sale report</span>
+                    <span class="pc-mtext">Sale Report</span>
                 </a>
             </li>
+
+            <li class="pc-item pc-caption"><label>Management</label></li>
             <li class="pc-item pc-hasmenu">
                 <a href="#!" class="pc-link">
-                    <span class="pc-micon"><i class="ti ti-user"></i></span>
+                    <span class="pc-micon"><i class="ti ti-users"></i></span>
                     <span class="pc-mtext">User Management</span>
-                    <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    <span class="pc-arrow"><i class="ti ti-chevron-right"></i></span>
                 </a>
                 <ul class="pc-submenu" id="order-submenu" style="display: none;">
                     <li class="pc-item">
                         <a class="pc-link" href="/users">
-                            <i class="bi bi-people"></i> All Users
+                            <i class="ti ti-users"></i> All Users
                         </a>
                     </li>
                     <li class="pc-item">
                         <a class="pc-link" href="/users/active">
-                            <i class="bi bi-person-check"></i> Active User
+                            <i class="ti ti-user-check"></i> Active User
                         </a>
                     </li>
                     <li class="pc-item">
                         <a class="pc-link" href="/users/trash">
-                            <i class="bi bi-trash"></i> Trash
+                            <i class="ti ti-trash"></i> Trash
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="pc-item pc-hasmenu">
                 <a href="#!" class="pc-link">
-                    <span class="pc-micon"><i class="ti ti-shopping-cart"></i></span>
+                    <span class="pc-micon"><i class="ti ti-clipboard-list"></i></span>
                     <span class="pc-mtext">Order Management</span>
-                    <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    <span class="pc-arrow"><i class="ti ti-chevron-right"></i></span>
                 </a>
                 <ul class="pc-submenu" id="order-submenu" style="display: none;">
                     <li class="pc-item"><a class="pc-link" href="/All_order">All Orders</a></li>
@@ -283,14 +403,24 @@ try {
                     <li class="pc-item"><a class="pc-link" href="/old_order">Older Orders</a></li>
                 </ul>
             </li>
-            <li class="pc-item">
-                <a href="/somepage" class="pc-link">
-                    <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
-                    <span class="pc-mtext">Sample page</span>
-                </a>
-            </li>
         </ul>
     </div>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="dn-sidebar-footer">
+            <img
+                src="<?= htmlspecialchars($_SESSION['user_profile'] ?? '') ?>"
+                onerror="this.onerror=null; this.src='/assets/images/userPlaceHolder.png';"
+                alt=""
+                class="dn-sidebar-footer-avatar">
+            <div class="dn-sidebar-footer-id">
+                <p class="dn-sidebar-footer-name"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></p>
+                <p class="dn-sidebar-footer-role"><?= htmlspecialchars($_SESSION['user_role'] ?? '') ?></p>
+            </div>
+            <a href="/logout" class="dn-sidebar-footer-logout" aria-label="Sign out">
+                <i class="ti ti-power"></i>
+            </a>
+        </div>
+    <?php endif; ?>
 </nav>
 <!-- [ Sidebar Menu ] end --> 
 
@@ -391,7 +521,7 @@ try {
                 <?php $conn = null; ?>
                 <li class="dropdown pc-h-item header-user-profile">
                     <a
-                        class="pc-head-link dropdown-toggle arrow-none me-0"
+                        class="dn-profile-trigger dropdown-toggle arrow-none me-0"
                         data-bs-toggle="dropdown"
                         href="#"
                         role="button"
@@ -400,117 +530,61 @@ try {
                         aria-expanded="false"
                     >
                         <?php if (isset($_SESSION['user_id'])): ?>
-                            <?php
-                                $profileImage = !empty($_SESSION['user_profile']) ? $_SESSION['user_profile'] : '';
-                            ?>
-                            <img 
-                                src="<?= htmlspecialchars($profileImage) ?>" 
-                                onerror="this.onerror=null; this.src='/views/assets/images/userPlaceHolder.png';" 
-                                alt="user-image" 
-                                class="user-avtar" 
-                                style="width: 35px; height: 35px; border-radius: 50%; border: 3px solid #ccc; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;">
-                            <span style="color:black;"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></span>
+                            <?php $profileImage = !empty($_SESSION['user_profile']) ? $_SESSION['user_profile'] : ''; ?>
+                            <img
+                                src="<?= htmlspecialchars($profileImage) ?>"
+                                onerror="this.onerror=null; this.src='/assets/images/userPlaceHolder.png';"
+                                alt="user-image"
+                                class="dn-profile-avatar">
                         <?php endif; ?>
                     </a>
-                    <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown" style="background:white; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);">
-                        <div class="dropdown-header">
-                            <div class="d-flex mb-1">
-                                <div class="flex-shrink-0">
-                                    <?php if (isset($_SESSION['user_id'])): ?>
-                                        <?php
-                                            $profileImage = !empty($_SESSION['user_profile']) ? $_SESSION['user_profile'] : '';
-                                        ?>
-                                        <img 
-                                            src="<?= htmlspecialchars($profileImage) ?>" 
-                                            onerror="this.onerror=null; this.src='/views/assets/images/userPlaceHolder.png';" 
-                                            alt="user-image" 
-                                            class="user-avtar wid-35" 
-                                            style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ccc;">
-                                    <?php endif; ?>
+                    <div class="dn-profile-menu dropdown-menu dropdown-menu-end pc-h-dropdown">
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <?php $profileImage = !empty($_SESSION['user_profile']) ? $_SESSION['user_profile'] : ''; ?>
+                            <div class="dn-profile-menu-header">
+                                <img
+                                    src="<?= htmlspecialchars($profileImage) ?>"
+                                    onerror="this.onerror=null; this.src='/assets/images/userPlaceHolder.png';"
+                                    alt="user-image"
+                                    class="dn-profile-avatar dn-profile-avatar-lg">
+                                <div class="dn-profile-menu-id">
+                                    <p class="dn-profile-name"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></p>
+                                    <p class="dn-profile-email"><?= htmlspecialchars($_SESSION['user_email'] ?? '') ?></p>
                                 </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <?php if (isset($_SESSION['user_id'])): ?>
-                                        <h6 class="mb-1" style="color:black;"><?=$_SESSION['user_name']?></h6>
-                                        <span style="color:grey;"><?= $_SESSION['user_role']?></span>
-                                    <?php endif; ?>
-                                </div>
-                                <a href="#!" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
+                                <span class="dn-role-badge dn-role-<?= htmlspecialchars($_SESSION['user_role'] ?? 'users') ?>">
+                                    <?= htmlspecialchars($_SESSION['user_role'] ?? 'users') ?>
+                                </span>
                             </div>
-                        </div>
-                        <ul class="nav drp-tabs nav-fill nav-tabs" id="mydrpTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button
-                                    class="nav-link active"
-                                    id="drp-t1"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#drp-tab-1"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="drp-tab-1"
-                                    aria-selected="true"
-                                    style="color:black;"
-                                ><i class="ti ti-user"></i> Profile</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button
-                                    class="nav-link"
-                                    id="drp-t2"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#drp-tab-2"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="drp-tab-2"
-                                    aria-selected="false"
-                                    style="color:black;"
-                                ><i class="ti ti-settings"></i> Setting</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="mysrpTabContent">
-                            <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1" tabindex="0">
-                                <a href="/users/edit/<?= $_SESSION['user_id']?>" class="dropdown-item" style="color:black;">
+
+                            <div class="dn-profile-menu-section">
+                                <a href="#!" class="dn-profile-menu-item" data-bs-toggle="modal" data-bs-target="#editProfileModal">
                                     <i class="ti ti-edit-circle"></i>
-                                    <span data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</span>
+                                    <span class="flex-1">Edit Profile</span>
+                                    <i class="ti ti-chevron-right dn-chevron"></i>
                                 </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-user"></i>
-                                    <span>View Profile</span>
+                                <a href="/admin" class="dn-profile-menu-item">
+                                    <i class="ti ti-dashboard"></i>
+                                    <span class="flex-1">Dashboard</span>
+                                    <i class="ti ti-chevron-right dn-chevron"></i>
                                 </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-clipboard-list"></i>
-                                    <span>Social Profile</span>
-                                </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-wallet"></i>
-                                    <span>Billing</span>
-                                </a>
-                                <a href="/logout" class="dropdown-item" style="color:black;">
+                                <?php if (($_SESSION['user_role'] ?? '') === 'admin'): ?>
+                                    <a href="/users" class="dn-profile-menu-item">
+                                        <i class="ti ti-users"></i>
+                                        <span class="flex-1">Manage Users</span>
+                                        <i class="ti ti-chevron-right dn-chevron"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="dn-profile-menu-section">
+                                <a href="/logout" class="dn-profile-menu-item dn-profile-menu-item-danger">
                                     <i class="ti ti-power"></i>
-                                    <span>Logout</span>
+                                    Sign out
                                 </a>
                             </div>
-                            <div class="tab-pane fade" id="drp-tab-2" role="tabpanel" aria-labelledby="drp-t2" tabindex="0">
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-help"></i>
-                                    <span>Support</span>
-                                </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-user"></i>
-                                    <span>Account Settings</span>
-                                </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-lock"></i>
-                                    <span>Privacy Center</span>
-                                </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-messages"></i>
-                                    <span>Feedback</span>
-                                </a>
-                                <a href="#!" class="dropdown-item" style="color:black;">
-                                    <i class="ti ti-list"></i>
-                                    <span>History</span>
-                                </a>
-                            </div>
-                        </div>
+
+                            <div class="dn-profile-menu-footer">v1.0.0 &middot; Daily Needs Admin</div>
+                        <?php endif; ?>
                     </div>
                 </li>
             </ul>
@@ -532,7 +606,7 @@ try {
                 <div class="position-relative d-inline-block">
                     <img id="profileImage" src="<?= $_SESSION['user_profile'] ?>" alt="Profile Image" class="rounded-circle border shadow" width="100" height="100">
                     <label for="profileUpload" class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-1" style="cursor: pointer;">
-                        <i class="bi bi-camera"></i>
+                        <i class="ti ti-camera"></i>
                     </label>
                     <input type="file" id="profileUpload" class="d-none" accept="image/*" onchange="previewImage(event)">
                 </div>

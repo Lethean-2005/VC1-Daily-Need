@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
     body {
         background-color: #f8f9fa;
         min-height: 100vh;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Nunito', 'Kantumruy Pro', sans-serif;
     }
 
     .main-content {
@@ -195,13 +195,13 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="action-buttons d-flex flex-wrap gap-3 mb-4">
         <button class="btn btn-outline-primary" onclick="restoreSelected()" id="restoreBtn" disabled>
-            <i class="fas fa-undo me-2"></i> Restore Selection
+            <i class="ti ti-arrow-back-up me-2"></i> Restore Selection
         </button>
         <button class="btn btn-outline-danger" onclick="deleteSelected()" id="deleteBtn" disabled>
-            <i class="fas fa-trash me-2"></i> Delete Selection
+            <i class="ti ti-trash me-2"></i> Delete Selection
         </button>
         <button class="btn btn-danger" onclick="emptyRecycleBin()" id="emptyBtn">
-            <i class="fas fa-trash-alt me-2"></i> Empty Recycle Bin
+            <i class="ti ti-trash-alt me-2"></i> Empty Recycle Bin
         </button>
     </div>
 
@@ -228,11 +228,11 @@ if (!isset($_SESSION['user_id'])) {
                                     <td class="checkbox"><input type="checkbox" class="recycleCheckbox form-check-input" data-id="<?= htmlspecialchars($user['id']) ?>"></td>
                                     <td>
                                         <?php
-                                            $profilePath = !empty($user['profile']) ? '/' . htmlspecialchars($user['profile']) : '/views/assets/images/userPlaceHolder.png';
+                                            $profilePath = !empty($user['profile']) ? '/' . htmlspecialchars($user['profile']) : '/assets/images/userPlaceHolder.png';
                                         ?>
                                         <img 
                                             src="<?= $profilePath ?>" 
-                                            onerror="this.onerror=null; this.src='/views/assets/images/userPlaceHolder.png';" 
+                                            onerror="this.onerror=null; this.src='/assets/images/userPlaceHolder.png';" 
                                             alt="Profile" 
                                             class="profile-img">
                                     </td>
@@ -251,14 +251,14 @@ if (!isset($_SESSION['user_id'])) {
                                     <td class="actions-column">
                                         <div class="dropdown">
                                             <button class="action-menu-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
+                                                <i class="ti ti-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item text-success restore-user" href="/users/restore/<?= $user['id'] ?>" data-id="<?= htmlspecialchars($user['id']) ?>">
-                                                    <i class="fas fa-undo me-2"></i>Restore</a>
+                                                    <i class="ti ti-arrow-back-up me-2"></i>Restore</a>
                                                 </li>
                                                 <li><a class="dropdown-item text-danger permanent-delete" href="/users/permanent-delete/<?= $user['id'] ?>" data-id="<?= htmlspecialchars($user['id']) ?>">
-                                                    <i class="fas fa-trash me-2"></i>Delete</a>
+                                                    <i class="ti ti-trash me-2"></i>Delete</a>
                                                 </li>
                                             </ul>
                                         </div>

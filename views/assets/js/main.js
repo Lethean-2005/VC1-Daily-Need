@@ -1,21 +1,3 @@
-// <--------------// ----------------- languages ---------------- //document.addEventListener("DOMContentLoaded", function () {
-    let currentLang = "en"; // Default language is English
-
-    document.getElementById("langToggle").addEventListener("click", function () {
-        currentLang = currentLang === "en" ? "km" : "en"; // Toggle between English and Khmer
-
-        // Update all text elements with the corresponding language
-        document.querySelectorAll(".lang").forEach(el => {
-            let newText = el.getAttribute(`data-${currentLang}`);
-            if (newText) {
-                el.textContent = newText;
-            }
-        });
-
-        // Change the button text to indicate the next language option
-        this.textContent = currentLang === "en" ? "ភាសាខ្មែរ" : "English";
-    });
-
 // <--------------// ----------------- nav links ---------------- //
 document.addEventListener("DOMContentLoaded", function () {
     // Select all navbar links
@@ -76,12 +58,16 @@ stats.forEach(stat => {
 // ------------------ Search Functionality (by Product Name Only) ------------------>
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('search');
-    searchForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        filterProducts();
-    });
+    if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            filterProducts();
+        });
+    }
 
-    searchInput.addEventListener('input', filterProducts);
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
 
     function filterProducts() {
         const searchQuery = searchInput.value.toLowerCase();
@@ -121,7 +107,10 @@ stats.forEach(stat => {
     // Favorite Toggle
     function toggleFavorite(productId) {
         const heartIcon = document.querySelector(`[data-heart-id="${productId}"]`);
-        if (heartIcon.classList.contains('bi-heart')) {
+        if (!heartIcon) return;
+        if (heartIcon.classList.contains('ti-heart')) {
+            heartIcon.classList.toggle('active');
+        } else if (heartIcon.classList.contains('bi-heart')) {
             heartIcon.classList.remove('bi-heart');
             heartIcon.classList.add('bi-heart-fill');
         } else {
@@ -129,25 +118,32 @@ stats.forEach(stat => {
             heartIcon.classList.add('bi-heart');
         }
     }
+    window.setRating = setRating;
+    window.toggleFavorite = toggleFavorite;
 
 
 // <--------------------- rate filter -------------------->
-// rate filter 
-document.getElementById("priceRange").addEventListener("input", function () {
-    let selectedPrice = parseInt(this.value);
-    document.getElementById("priceValue").innerText = `$1 - $${selectedPrice}`;
+// rate filter
+const priceRangeInput = document.getElementById("priceRange");
+if (priceRangeInput) {
+    priceRangeInput.addEventListener("input", function () {
+        let selectedPrice = parseInt(this.value);
+        const priceValueEl = document.getElementById("priceValue");
+        if (priceValueEl) priceValueEl.innerText = `$1 - $${selectedPrice}`;
 
-    document.querySelectorAll(".col-md-4").forEach(product => {
-        let priceText = product.querySelector(".price").innerText;
-        let productPrice = parseFloat(priceText.replace(/[^0-9.]/g, ""));
-        
-        if (productPrice <= selectedPrice) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
+        document.querySelectorAll(".col-md-4").forEach(product => {
+            const priceEl = product.querySelector(".price");
+            if (!priceEl) return;
+            let productPrice = parseFloat(priceEl.innerText.replace(/[^0-9.]/g, ""));
+
+            if (productPrice <= selectedPrice) {
+                product.style.display = "block";
+            } else {
+                product.style.display = "none";
+            }
+        });
     });
-});
+}
 
 
 
