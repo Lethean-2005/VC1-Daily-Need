@@ -11,7 +11,24 @@ class SocialAuthController extends BasecustomerController {
     public function __construct() {
         $this->auth = new SocialAuthModel();
         $this->userModel = new UserModel();
-        $this->config = require __DIR__ . "/../../../Config/oauth.php";
+
+        // On Railway, GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET come from env vars
+        // (never baked into the image). Locally, fall back to Config/oauth.php.
+        $configPath = __DIR__ . "/../../../Config/oauth.php";
+        if (getenv('GOOGLE_CLIENT_ID')) {
+            $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+            $host   = $_SERVER['HTTP_HOST'] ?? 'localhost:8003';
+            $this->config = [
+                'google' => [
+                    'client_id'     => getenv('GOOGLE_CLIENT_ID'),
+                    'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
+                    'redirect_uri'  => $scheme . '://' . $host . '/auth/google/callback',
+                ],
+            ];
+        } else {
+            $this->config = require $configPath;
+        }
+
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

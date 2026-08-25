@@ -12,7 +12,9 @@
     <meta name="author" content="CodedThemes">
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/favicon-32.png?v=3" type="image/png">
+    <link rel="icon" href="/assets/images/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/images/favicon-180.png?v=3">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" id="main-font-link">
     <!-- [Tabler Icons] https://tablericons.com -->
     <link rel="stylesheet" href="/assets/fonts/tabler-icons.min.css" >

@@ -1,16 +1,5 @@
 <?php
-// Database connection to dailyneed_db
-$host = 'localhost';
-$dbname = 'dailyneed_db';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host; dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
+$pdo = Database::connect();
 
 // Fetch top users based on the number of orders
 $topUsersStmt = $pdo->query("

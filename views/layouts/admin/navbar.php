@@ -1,37 +1,6 @@
 ﻿<?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dailyneed_db";
-
-function sendTelegramMessage($chatId, $message, $botToken) {
-    $url = "https://api.telegram.org/bot$botToken/sendMessage";
-    $data = [
-        'chat_id' => $chatId,
-        'text' => $message,
-        'parse_mode' => 'HTML'
-    ];
-
-    $options = [
-        'http' => [
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data),
-        ],
-    ];
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-
-    if ($result === false) {
-        error_log("Failed to send Telegram message: " . print_r($http_response_header, true));
-    }
-    return $result;
-}
-
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = Database::connect();
 
     $todayStart = date('Y-m-d H:i:s', strtotime('-24 hours'));
 

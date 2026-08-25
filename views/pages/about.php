@@ -250,7 +250,7 @@
 
 <!-- About Hero -->
 <style>
-.dn-about-hero { background: #eef6f5; padding: 110px 0 90px; overflow: hidden; }
+.dn-about-hero { background: #eef6f5; padding: 70px 0 0; overflow: hidden; }
 .dn-about-hero .container { max-width: 1200px; }
 .dn-about-hero-text h1 { font-size: 2.6rem; font-weight: 800; color: #0F5553; margin-bottom: 6px; }
 .dn-about-hero-text h2 { font-size: 1.7rem; font-weight: 800; color: #14110d; line-height: 1.3; margin-bottom: 16px; }
@@ -290,7 +290,7 @@
 .dn-about-trust {
     position: relative;
     z-index: 2;
-    margin-top: -60px;
+    margin-top: -46px;
     margin-bottom: 60px;
 }
 .dn-about-trust-card {

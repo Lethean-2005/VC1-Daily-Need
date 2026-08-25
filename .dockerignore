@@ -1,0 +1,16 @@
+.git
+.gitignore
+
+# Never bake real secrets into the image — Railway uses env vars instead
+Config/database.php
+Config/oauth.php
+
+# Deployment artifacts, not part of the app
+deploy_upload/
+deploy-clean.zip
+deploy-part*.zip
+*.zip
+
+# Local-only
+.claude/
+serve.bat

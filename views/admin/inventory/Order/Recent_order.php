@@ -1,15 +1,8 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dailyneed_db";
-
 // Handle AJAX requests
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = Database::connect();
 
         // Handle delete request
         if (isset($_POST['action']) && $_POST['action'] === 'delete_order') {
@@ -41,8 +34,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
 // Normal page load (non-AJAX)
 try {
-    $conn = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = Database::connect();
 
     // Handle message request (for simplicity, we'll just echo it; in practice, you'd store or send it)
     if (isset($_POST['send_message'])) {

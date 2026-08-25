@@ -9,8 +9,20 @@
         // instead of every Model constructing its own `new Database(...)`.
         public static function connect() {
             if (self::$instance === null) {
-                $config = require __DIR__ . "/../Config/database.php";
-                self::$instance = new self($config['host'], $config['dbname'], $config['username'], $config['password'], $config['port'] ?? 3306);
+                // Railway's MySQL plugin injects MYSQLHOST/MYSQLPORT/etc as env vars —
+                // prefer those in production, fall back to Config/database.php for local dev.
+                if (getenv('MYSQLHOST')) {
+                    self::$instance = new self(
+                        getenv('MYSQLHOST'),
+                        getenv('MYSQLDATABASE'),
+                        getenv('MYSQLUSER'),
+                        getenv('MYSQLPASSWORD'),
+                        getenv('MYSQLPORT') ?: 3306
+                    );
+                } else {
+                    $config = require __DIR__ . "/../Config/database.php";
+                    self::$instance = new self($config['host'], $config['dbname'], $config['username'], $config['password'], $config['port'] ?? 3306);
+                }
             }
             return self::$instance;
         }

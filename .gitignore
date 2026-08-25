@@ -8,8 +8,8 @@ error_log
 .env
 .env.*
 !.env.example
-Config/oauth.php
-Config/database.php
+**/Config/oauth.php
+**/Config/database.php
 
 # OS junk
 .DS_Store
@@ -22,3 +22,8 @@ Thumbs.db
 
 # Local server misc
 *.pid
+
+# Deployment packaging (never commit — contains real Config/*.php copies)
+deploy_upload/
+deploy-clean.zip
+deploy-part*.zip
