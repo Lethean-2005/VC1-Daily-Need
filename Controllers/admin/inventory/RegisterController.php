@@ -94,4 +94,3 @@ class RegisterController extends BaseAdminController {
     
 }
 
-?>

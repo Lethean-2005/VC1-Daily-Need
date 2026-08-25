@@ -240,4 +240,3 @@ function dn_user_row($user, $showDelete) {
 else:
     $this->redirect("/admin-login");
 endif;
-?>

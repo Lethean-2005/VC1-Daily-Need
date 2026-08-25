@@ -7,4 +7,3 @@ if (!empty($_FILES)) {
     $targetFile =  $targetPath. $_FILES['file']['name'];  //5
     move_uploaded_file($tempFile,$targetFile); //6
 }
-?> 
