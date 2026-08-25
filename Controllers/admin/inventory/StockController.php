@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'Models/StockModel.php';
 
 class StockController extends BaseAdminController {

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
  // Ensure the correct path to the model file
     require_once  'Models/SalesReportModel.php';  // Adjust the path as necessary

@@ -1,4 +1,4 @@
-﻿<h1>Hello some page</h1>
+<h1>Hello some page</h1>
 
     <style>
         body {

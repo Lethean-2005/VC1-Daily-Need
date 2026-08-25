@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require_once 'Models/UserModel.php';
     require_once 'Models/OrderModel.php';
     class UserController extends BaseAdminController {

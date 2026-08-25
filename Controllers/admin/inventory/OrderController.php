@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class OrderController extends BaseAdminController {
     private $orderModel;
 

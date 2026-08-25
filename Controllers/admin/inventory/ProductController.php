@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once "Models/ProductModel.php";
 class ProductController extends BaseAdminController {
     private $products;

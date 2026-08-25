@@ -1,4 +1,4 @@
-﻿<footer class="dn-footer">
+<footer class="dn-footer">
   <div class="container py-5">
     <div class="row g-4">
       <div class="col-lg-4 col-12">

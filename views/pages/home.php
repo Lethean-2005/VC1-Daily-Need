@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $categories = [
     ['label' => 'Household Care', 'count' => '100+ Products', 'href' => '/houeshold', 'img' => 'House Hold Hygiene (11)/Raid.png',            'tint' => '#eaf3e9'],
     ['label' => 'Feminine Care',  'count' => '90+ Products',  'href' => '/feminine',   'img' => 'Feminine Hygiene (10)/Vaseline Original.png', 'tint' => '#fbe9ee'],
