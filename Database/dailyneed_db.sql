@@ -148,7 +148,8 @@ CREATE TABLE `users` (
   `password` varchar(255) NULL,
   `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `role` enum('users','admin') NOT NULL,
-  `google_id` varchar(255) NULL UNIQUE
+  `google_id` varchar(255) NULL UNIQUE,
+  `last_login` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
