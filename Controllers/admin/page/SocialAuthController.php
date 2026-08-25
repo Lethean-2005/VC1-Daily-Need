@@ -16,7 +16,10 @@ class SocialAuthController extends BasecustomerController {
         // (never baked into the image). Locally, fall back to Config/oauth.php.
         $configPath = __DIR__ . "/../../../Config/oauth.php";
         if (getenv('GOOGLE_CLIENT_ID')) {
-            $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+            // Railway terminates TLS at the edge and forwards over plain HTTP,
+            // so $_SERVER['HTTPS'] is never set here — check X-Forwarded-Proto.
+            $forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+            $scheme = ($forwardedProto === 'https' || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')) ? 'https' : 'http';
             $host   = $_SERVER['HTTP_HOST'] ?? 'localhost:8003';
             $this->config = [
                 'google' => [
